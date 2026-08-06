@@ -35,25 +35,25 @@ if (menuBtn && navbar) {
     });
 }
 
-// Interactive Character Bubble (Persist across tabs)
-const character = document.getElementById('character');
+// Automatic Rotating Character Dialogues Every 2 Seconds
 const characterBubble = document.getElementById('characterBubble');
 
 const greetings = [
     "✨ Welcome to Lenathea!",
     "🚀 Ready to use our platform?",
-    "💙 Have a great day!",
-    "⚡ Fast & Minimalist!"
+    "💙 Have a wonderful day!",
+    "⚡ Fast, Secure & Free API!",
+    "🤖 Check our WhatsApp Bot!"
 ];
 
-if (character && characterBubble) {
-    character.addEventListener('click', () => {
-        const randomMsg = greetings[Math.floor(Math.random() * greetings.length)];
-        characterBubble.textContent = randomMsg;
-        characterBubble.classList.add('show');
+let currentIndex = 0;
 
-        setTimeout(() => {
-            characterBubble.classList.remove('show');
-        }, 2500);
-    });
+function updateDialogue() {
+    if (characterBubble) {
+        characterBubble.textContent = greetings[currentIndex];
+        currentIndex = (currentIndex + 1) % greetings.length;
     }
+}
+
+// Change dialogue every 2 seconds automatically
+setInterval(updateDialogue, 2000);
