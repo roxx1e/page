@@ -163,14 +163,15 @@ transform: translateY(0);
 }
 
 /*======================
-HERO & CHARACTER
+HERO & CHARACTER (Memenuhi & Menyatu dengan Background)
 =======================*/
 .hero-grid{
 display:grid;
-grid-template-columns:50% 50%;
+grid-template-columns:55% 45%;
 align-items:center;
 gap:20px;
 min-height: calc(100vh - 200px);
+position: relative;
 }
 
 .hero-left{
@@ -191,15 +192,17 @@ align-items:flex-end;
 
 #character{
 width:100%;
-max-width:540px;
-height:75vh;
+max-width:680px;
+height:85vh;
 object-fit:contain;
 object-position:bottom center;
 cursor:pointer;
 user-select:none;
-filter:drop-shadow(0 25px 25px rgba(0,0,0,.15));
+filter:drop-shadow(0 20px 30px rgba(93,169,255,0.25));
 animation:characterFloat 4s ease-in-out infinite;
 transition:.35s;
+mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
+-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
 }
 
 #character:hover{
@@ -220,6 +223,7 @@ opacity:0;
 transform:translateY(15px);
 transition:.3s;
 font-size: 0.9rem;
+z-index: 10;
 }
 
 #characterBubble.show{
@@ -248,45 +252,7 @@ display:flex;
 flex-direction:column;
 align-items:flex-start;
 justify-content:center;
-gap:18px;
-}
-
-.pixel-dots{
-display:flex;
-gap:8px;
-}
-
-.pixel-dots span{
-width:10px;
-height:10px;
-background:#8fc5ff;
-border-radius:50%;
-animation:dotBounce 1.8s infinite;
-}
-.pixel-dots span:nth-child(2){ animation-delay:.25s; }
-.pixel-dots span:nth-child(3){ animation-delay:.5s; }
-
-.hero-right h1{
-font-family:"Cherry Bomb One",cursive;
-font-size:clamp(2.5rem, 5vw, 4.5rem);
-line-height:1;
-color:#3f84ff;
-text-shadow:3px 3px 0 #fff, 5px 5px 0 rgba(0,0,0,.1);
-}
-
-.subtitle{
-font-family:Fredoka,sans-serif;
-font-size:1.2rem;
-font-weight:700;
-letter-spacing:3px;
-color:#6e8ec8;
-}
-
-.hero-right p{
-font-size:1rem;
-line-height:1.8;
-color:var(--muted);
-max-width:520px;
+gap:24px;
 }
 
 .hero-buttons{
@@ -353,84 +319,8 @@ color:var(--muted);
 }
 
 /*======================
-SECTIONS & CARDS
+ABOUT
 =======================*/
-.section-title{
-font-family:"Cherry Bomb One",cursive;
-font-size:clamp(2rem, 4vw, 3.2rem);
-text-align:center;
-margin-bottom:40px;
-color:#4a8fff;
-text-shadow:2px 2px 0 #fff, 4px 4px 0 rgba(0,0,0,.1);
-}
-
-.services-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:24px;
-}
-
-.service-card{
-background:#ffffffbb;
-backdrop-filter:blur(18px);
-border:3px solid var(--border);
-border-radius:24px;
-padding:28px;
-box-shadow:var(--shadow);
-transition:.28s;
-position:relative;
-overflow:hidden;
-}
-
-.service-card:hover{
-transform:translateY(-6px);
-}
-
-.service-card i{
-font-size:48px;
-color:#5b9cff;
-margin-bottom:14px;
-display:inline-block;
-}
-
-.service-card h3{
-font-family:Fredoka,sans-serif;
-font-size:1.3rem;
-margin-bottom:10px;
-}
-
-.service-card p{
-line-height:1.7;
-color:var(--muted);
-font-size: 0.95rem;
-}
-
-/* API GRID */
-.api-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-.api-box{
-background:linear-gradient(180deg,#ffffff,#eef7ff);
-border:3px solid var(--border);
-border-radius:18px;
-padding:24px;
-font-family:"Cherry Bomb One";
-font-size:1.8rem;
-text-align:center;
-color:#4b8dff;
-box-shadow:var(--shadow);
-transition:.25s;
-cursor: pointer;
-}
-
-.api-box:hover{
-transform:translateY(-5px);
-}
-
-/* ABOUT */
 .about{
 display:grid;
 grid-template-columns:1.1fr .9fr;
@@ -501,11 +391,6 @@ ANIMATIONS
 50%{ transform:translateY(-12px); }
 }
 
-@keyframes dotBounce{
-0%,100%{ transform:translateY(0); }
-50%{ transform:translateY(-6px); }
-}
-
 /*======================
 RESPONSIVE
 =======================*/
@@ -527,8 +412,7 @@ nav.show{ display:flex; }
 .hero-grid{ grid-template-columns:1fr; min-height: auto; }
 .hero-left{ order:2; }
 .hero-right{ order:1; align-items:center; text-align:center; }
-.hero-right p{ max-width:100%; }
-#character{ height:50vh; max-width:400px; }
+#character{ height:55vh; max-width:450px; }
 .stats, .hero-buttons{ justify-content:center; }
-.services-grid, .api-grid, .about{ grid-template-columns:1fr; }
+.about{ grid-template-columns:1fr; }
   }
