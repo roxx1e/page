@@ -14,29 +14,29 @@
 
   <style>
     /* ==========================================================
-       CSS STYLES - LIGHT PASTEL THEME (BASED ON IMAGE 2)
+       CSS STYLES - LIGHT PASTEL THEME
     ========================================================== */
     :root {
       /* Warna Background Pastel */
-      --bg-top: #e0f2fe;    /* Light Blue */
-      --bg-mid: #fae8ff;    /* Light Pink/Purple */
-      --bg-bot: #ffe4e6;    /* Soft Rose */
+      --bg-top: #e0f2fe;    
+      --bg-mid: #fae8ff;    
+      --bg-bot: #ffe4e6;    
       
       /* Warna Teks dan Elemen */
-      --text: #1e293b;      /* Dark Navy/Black */
+      --text: #1e293b;      
       --text-muted: #475569;
       --white: #ffffff;
       
       /* Warna Aksen (Tombol & Kotak) */
-      --primary: #3b82f6;   /* Blue Button */
-      --shadow-color: #000000; /* Neo-brutalism shadow */
+      --primary: #3b82f6;   
+      --shadow-color: #000000; 
       
       /* 3 Kotak Warna Warni */
       --box-yellow: #fef08a;
       --box-green: #bbf7d0;
       --box-purple: #e9d5ff;
 
-      /* Kaca / Glassmorphism untuk section lain */
+      /* Kaca / Glassmorphism */
       --glass-bg: rgba(255, 255, 255, 0.6);
       --glass-border: rgba(255, 255, 255, 0.9);
     }
@@ -58,11 +58,11 @@
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
 
-    /* Background Effects (Awan & Daun styling dari Image 1) */
+    /* Background Effects */
     .background { position: fixed; inset: 0; overflow: hidden; z-index: -10; }
     .blur { position: absolute; border-radius: 50%; filter: blur(80px); animation: blob 12s ease-in-out infinite; opacity: 0.7; }
-    .blur-1 { width: 400px; height: 400px; background: rgba(255,255,255,0.8); left: -100px; top: -100px; } /* Awan Kiri */
-    .blur-2 { width: 350px; height: 350px; background: rgba(255,255,255,0.8); right: -100px; bottom: 10%; animation-delay: 3s; } /* Awan Kanan */
+    .blur-1 { width: 400px; height: 400px; background: rgba(255,255,255,0.8); left: -100px; top: -100px; } 
+    .blur-2 { width: 350px; height: 350px; background: rgba(255,255,255,0.8); right: -100px; bottom: 10%; animation-delay: 3s; } 
     .blur-3 { width: 300px; height: 300px; background: #bae6fd; left: 40%; top: 40%; animation-delay: 6s; }
 
     /* ==========================================================
@@ -74,7 +74,7 @@
     }
     .logo { 
       font-family: "Fredoka"; font-size: 2rem; font-weight: 700; color: var(--primary); 
-      text-shadow: 2px 2px 0px var(--shadow-color); /* Pixel/Brutalist feel */
+      text-shadow: 2px 2px 0px var(--shadow-color); 
     }
     
     nav { 
@@ -92,7 +92,7 @@
     }
 
     /* ==========================================================
-       HERO SECTION (LAYOUT LIKE IMAGE 1)
+       HERO SECTION 
     ========================================================== */
     .hero { 
       width: min(1200px, 92%); margin: 0 auto; min-height: 85vh; 
@@ -118,30 +118,28 @@
       animation: float-slow 4s ease-in-out infinite;
     }
 
-    /* Character */
+    /* Character & Animations */
+    @keyframes characterFloat {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
     .character-card { position: relative; width: 300px; display: flex; justify-content: center; align-items: center; }
     #character { 
-      width: 280px; height: 280px; cursor: pointer; 
+      width: 320px; height: auto; cursor: pointer; 
       position: relative; z-index: 2; transition: .35s; 
       filter: drop-shadow(0 15px 20px rgba(0,0,0,0.15)); 
+      animation: characterFloat 4s ease-in-out infinite;
     }
-    #character:hover { transform: scale(1.05) translateY(-10px); }
+    #character:hover { transform: scale(1.05) translateY(-10px) !important; animation-play-state: paused; }
     #character.clicked { animation: clickPose .45s ease; }
+    
+    .dialog { position: absolute; top: 10px; right: -20px; background: white; color: #222; padding: 10px 15px; border-radius: 16px; font-weight: 700; opacity: 0; transform: translateY(20px); transition: .3s; z-index: 10; box-shadow: 0 10px 20px rgba(0,0,0,.15); }
+    .dialog.show { opacity: 1; transform: translateY(0); }
+    .dialog::after { content: ""; position: absolute; bottom: -6px; left: 20px; width: 14px; height: 14px; background: white; transform: rotate(45deg); }
 
-    /* Middle Bubble */
-    .bubble-mid {
-      background: var(--white);
-      padding: 15px 30px;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      max-width: 450px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      line-height: 1.6;
-    }
-
-    /* 3 Colored Squares (From Image 2) */
+    /* 3 Colored Squares */
     .colored-squares {
       display: flex;
       gap: 15px;
@@ -153,7 +151,7 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       font-weight: 700; font-size: 1rem; color: var(--text);
       border: 2px solid var(--shadow-color);
-      box-shadow: 3px 3px 0px var(--shadow-color); /* Neo-brutalism shadow */
+      box-shadow: 3px 3px 0px var(--shadow-color); 
       transition: .2s;
     }
     .sq:hover { transform: translateY(-3px); box-shadow: 5px 5px 0px var(--shadow-color); }
@@ -162,7 +160,7 @@
     .sq-2 { background: var(--box-green); }
     .sq-3 { background: var(--box-purple); }
 
-    /* Main Button (From Image 2) */
+    /* Main Button */
     .main-btn {
       background: var(--primary);
       color: var(--white);
@@ -182,13 +180,9 @@
       transform: translate(2px, 2px);
       box-shadow: 2px 2px 0px var(--shadow-color);
     }
-    
-    .dialog { position: absolute; top: 10px; right: 0px; background: white; color: #222; padding: 10px 15px; border-radius: 16px; font-weight: 700; opacity: 0; transform: translateY(20px); transition: .3s; z-index: 10; box-shadow: 0 10px 20px rgba(0,0,0,.15); }
-    .dialog.show { opacity: 1; transform: translateY(0); }
-    .dialog::after { content: ""; position: absolute; bottom: -6px; left: 20px; width: 14px; height: 14px; background: white; transform: rotate(45deg); }
 
     /* ==========================================================
-       OTHER SECTIONS (FEATURES, API, ABOUT) - ADJUSTED TO LIGHT THEME
+       OTHER SECTIONS (FEATURES, API, ABOUT) 
     ========================================================== */
     section { width: min(1200px, 92%); margin: auto; padding: 90px 0; }
     .section-tag { display: inline-flex; padding: 8px 18px; border-radius: 999px; background: var(--white); border: 2px solid var(--shadow-color); font-weight: 700; font-size: 13px; margin-bottom: 15px; box-shadow: 2px 2px 0px var(--shadow-color); }
@@ -223,20 +217,9 @@
     .about li i { color: var(--primary); font-size: 20px; }
     .about-right { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
-    .cta { padding-bottom: 100px; }
-    .cta-box { text-align: center; padding: 70px 30px; border-radius: 35px; background: rgba(255,255,255,0.7); border: 2px solid var(--white); backdrop-filter: blur(25px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .cta-box h2 { font-family: "Fredoka"; font-size: 42px; margin-bottom: 20px; }
-    .cta-box p { color: var(--text-muted); margin-bottom: 35px; font-weight: 600; }
-    
-    footer { padding: 50px 20px; text-align: center; border-top: 2px solid var(--white); position: relative; z-index: 10; background: rgba(255,255,255,0.3); }
-    .footer-logo { font-family: "Fredoka"; font-size: 32px; font-weight: 700; color: var(--primary); margin-bottom: 15px; text-shadow: 2px 2px 0px var(--shadow-color); }
-    .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 25px 0; }
-    .footer-links a { color: var(--text); font-weight: 600; transition: .3s; cursor: pointer; }
-    .footer-links a:hover { color: var(--primary); }
-    .footer-social { display: flex; justify-content: center; gap: 18px; margin-bottom: 25px; }
-    .footer-social a { width: 45px; height: 45px; display: flex; justify-content: center; align-items: center; border-radius: 50%; background: var(--white); border: 2px solid var(--shadow-color); font-size: 20px; transition: .35s; color: var(--text); box-shadow: 2px 2px 0px var(--shadow-color); }
-    .footer-social a:hover { transform: translateY(-4px); background: var(--primary); color: white; box-shadow: 4px 4px 0px var(--shadow-color); }
-    .copyright { color: var(--text-muted); font-size: 14px; font-weight: 600; margin-top: 20px; }
+    /* FOOTER (CLEANED) */
+    footer { padding: 40px 20px; text-align: center; position: relative; z-index: 10; background: rgba(255,255,255,0.3); }
+    .copyright { color: var(--text-muted); font-size: 14px; font-weight: 600; margin-top: 10px; }
 
     /* Effects & Animations */
     #sakura { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
@@ -267,7 +250,7 @@
     @media (max-width: 700px) {
       .feature-grid, .stats-grid, .about-right { grid-template-columns: 1fr; }
       .bubble-top { font-size: 1.2rem; padding: 12px 25px; }
-      #character { width: 220px; height: 220px; }
+      #character { width: 250px; }
     }
 
     /* Keyframes */
@@ -304,7 +287,7 @@
     </nav>
   </div>
 
-  <!-- HERO SECTION (Styled like Image 1 layout) -->
+  <!-- HERO SECTION -->
   <header class="hero tab-section" id="home">
     <div class="hero-container">
       
@@ -313,15 +296,10 @@
         Lenathea API Platform
       </div>
 
-      <!-- Character -->
+      <!-- Character (Updated Link & CSS Animation) -->
       <div class="character-card">
-        <img id="character" src="https://api.dicebear.com/9.x/bottts/svg?seed=Lenathea&mouth=smile&eyes=happy" alt="Lenathea">
+        <img id="character" src="https://banner2.cleanpng.com/lnd/20240920/ka/6ec8d33fa2c376f9b81e3e65b5ea10.webp" alt="Lenathea">
         <div id="dialog" class="dialog">Hai~ 👋</div>
-      </div>
-
-      <!-- Mid Text Box -->
-      <div class="bubble-mid">
-        Modern WhatsApp Bot & Realtime REST API. Build faster with our powerful downloader, AI, and search engine.
       </div>
 
       <!-- Three Stat Squares (Yellow, Green, Purple) -->
@@ -444,31 +422,8 @@
     </div>
   </section>
 
-  <!-- CTA SECTION -->
-  <section class="cta tab-section" id="cta-section">
-    <div class="cta-box">
-      <h2>Ready to Build Something Amazing?</h2>
-      <p>Start integrating Lenathea API into your application today.</p>
-      <a href="#" class="main-btn" style="display:inline-block;">Get Started</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
+  <!-- FOOTER (Cleaned up) -->
   <footer id="contact">
-    <div class="footer-logo">LENATHEA</div>
-    <p style="color:var(--text-muted); font-weight:600;">Modern WhatsApp Bot & Realtime API Platform</p>
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#features">Features</a>
-      <a href="#api">API</a>
-      <a href="#about">About</a>
-    </div>
-    <div class="footer-social">
-      <a href="#"><i class="ri-github-fill"></i></a>
-      <a href="#"><i class="ri-discord-fill"></i></a>
-      <a href="#"><i class="ri-telegram-fill"></i></a>
-      <a href="#"><i class="ri-whatsapp-fill"></i></a>
-    </div>
     <div class="copyright">
       © 2026 Lenathea. Made with ❤️ for Developers.
     </div>
@@ -478,19 +433,17 @@
     /* ==========================================================
        TAB NAVIGATION SYSTEM (SPA LOGIC)
     ========================================================== */
-    const allNavLinks = document.querySelectorAll('nav a, .footer-links a, .nav-btn');
+    const allNavLinks = document.querySelectorAll('nav a, .nav-btn');
     const secHero = document.getElementById('home');
     const secFeatures = document.getElementById('features');
     const secAPI = document.getElementById('api');
     const secAbout = document.getElementById('about');
-    const secCTA = document.getElementById('cta-section');
 
     function switchTab(targetId) {
         if(secHero) secHero.style.display = 'none';
         if(secFeatures) secFeatures.style.display = 'none';
         if(secAPI) secAPI.style.display = 'none';
         if(secAbout) secAbout.style.display = 'none';
-        if(secCTA) secCTA.style.display = 'none';
 
         document.querySelectorAll('nav a').forEach(link => link.classList.remove('active-tab'));
         const activeNav = document.querySelector(`nav a[href="${targetId}"]`);
@@ -504,10 +457,8 @@
             if(secAbout) secAbout.style.display = 'grid'; 
         } else if(targetId === '#contact') {
             if(secHero) secHero.style.display = 'flex';
-            if(secCTA) secCTA.style.display = 'block';
         } else {
             if(secHero) secHero.style.display = 'flex'; 
-            if(secCTA) secCTA.style.display = 'block';
         }
         window.dispatchEvent(new Event('scroll'));
     }
@@ -539,18 +490,6 @@
     const dialog = document.getElementById("dialog");
     let clickCount = 0; let busy = false; let totalClick = 0;
 
-    const idleImage = "https://api.dicebear.com/9.x/bottts/svg?seed=Lenathea&mouth=smile&eyes=happy";
-    const blinkImage = "https://api.dicebear.com/9.x/bottts/svg?seed=Lenathea&mouth=smile&eyes=bulging";
-    const poses = [
-        "https://api.dicebear.com/9.x/bottts/svg?seed=Lenathea&mouth=smile&eyes=hearts",
-        "https://api.dicebear.com/9.x/bottts/svg?seed=Lenathea&mouth=smile&eyes=wink",
-        "https://api.dicebear.com/9.x/bottts/svg?seed=Lenathea&mouth=surprised&eyes=happy"
-    ];
-    const moods = {
-        normal: idleImage,
-        happy: "https://api.dicebear.com/9.x/bottts/svg?seed=Lenathea&mouth=smile&eyes=hearts",
-        sleep: "https://api.dicebear.com/9.x/bottts/svg?seed=Lenathea&mouth=smile&eyes=closed"
-    };
     const messages = [
         "Hai~ 👋", "Selamat datang 💙", "Mau coba API-ku? ✨", 
         "Bot siap membantu 😄", "Semoga harimu menyenangkan 🌸", 
@@ -567,20 +506,18 @@
         dialog.timer = setTimeout(()=>{ dialog.classList.remove("show"); },2200);
     }
 
-    function randomPose(){
+    function interactCharacter(){
         if(busy) return;
         busy = true; clickCount++; totalClick++;
         character.classList.add("clicked");
-        character.src = random(poses);
         showDialog(random(messages));
         createSpark();
         setTimeout(()=>{
-            character.src = idleImage;
             character.classList.remove("clicked");
             busy = false;
         },1500);
     }
-    character.addEventListener("click", randomPose);
+    character.addEventListener("click", interactCharacter);
 
     function createSpark(){
         for(let i=0;i<8;i++){
@@ -596,7 +533,7 @@
     }
 
     /* SCROLL REVEAL */
-    const revealItems = document.querySelectorAll(".feature,.glass-card,.stat-box,.cta-box,.about-left,.about-right");
+    const revealItems = document.querySelectorAll(".feature,.glass-card,.stat-box,.about-left,.about-right");
     const revealObserver = new IntersectionObserver((entries)=>{
         entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add("show"); });
     }, { threshold:.15 });
@@ -647,24 +584,6 @@
     document.querySelector(".hero-top").appendChild(menuBtn);
     menuBtn.addEventListener("click",()=>{ nav.classList.toggle("active"); });
 
-    /* BLINK & FLOAT */
-    function blink(){
-        if(busy) return;
-        character.src = blinkImage;
-        setTimeout(()=>{ character.src = idleImage; },180);
-    }
-    setInterval(()=>{ if(Math.random()>.55) blink(); }, 4500);
-
-    setInterval(()=>{
-        if(busy)return;
-        const r = Math.random()*6-3;
-        character.animate([
-            { transform:`translateY(0px) rotate(0deg)` },
-            { transform:`translateY(-12px) rotate(${r}deg)` },
-            { transform:`translateY(0px) rotate(0deg)` }
-        ],{ duration: 1800, easing: "ease-in-out" });
-    }, 6000);
-
     /* DOUBLE TAP HEART EXPLOSION */
     let lastTap = 0;
     character.addEventListener("click",()=>{
@@ -684,6 +603,75 @@
         }
         lastTap=now;
     });
+
+    /* AUTO TYPING DIALOG */
+    const dialogPool = [
+        "hai~ 👋", "selamat datang di lenathea ✨", "api sedang online 🚀",
+        "mau coba fitur ai? 💙", "aku siap membantu 😊", "happy coding ❤️",
+        "semoga harimu menyenangkan 🌸", "wah kamu balik lagi 😄",
+        "bot standby 24 jam ⚡", "let's build something amazing!"
+    ];
+    let typing = false;
+    async function typeDialog(text){
+        if(typing) return;
+        typing = true;
+        dialog.classList.add("show");
+        dialog.innerHTML="";
+        for(let i=0;i<text.length;i++){
+            dialog.innerHTML += text[i];
+            await new Promise(r=>setTimeout(r,35));
+        }
+        setTimeout(()=>{
+            dialog.classList.remove("show");
+            typing=false;
+        },2500);
+    }
+    setInterval(()=>{
+        if(busy) return;
+        if(Math.random()>.7) typeDialog(random(dialogPool));
+    },9000);
+
+    /* RANDOM IDLE TALK */
+    const idleTalk = [
+        "✨ Welcome~", "💙 API Online", "😊 Hi Developer!",
+        "🌸 Let's Build!", "❤️ Need Help?", "⚡ Fast Response",
+        "🚀 Explore API", "☕ Coffee Time?", "😴 I'm still here.",
+        "🎉 Nice to meet you!"
+    ];
+    let idleTimer;
+    function randomTalk(){
+        clearTimeout(idleTimer);
+        idleTimer=setTimeout(()=>{
+            if(busy)return;
+            typeDialog(random(idleTalk));
+        },7000+Math.random()*7000);
+    }
+    randomTalk();
+    document.addEventListener("mousemove",randomTalk);
+    document.addEventListener("touchstart",randomTalk);
+
+    /* GLOW FOLLOW CHARACTER */
+    document.addEventListener("mousemove",(e)=>{
+        const x=(e.clientX/window.innerWidth-.5)*8;
+        const y=(e.clientY/window.innerHeight-.5)*8;
+        character.style.filter = `drop-shadow(${x}px ${y}px 30px rgba(59,130,246,.25))`;
+    });
+
+    /* CONFETTI ON CLICK */
+    function confetti(){
+        for(let i=0;i<35;i++){
+            const c=document.createElement("span");
+            c.className="confetti";
+            c.style.left = character.getBoundingClientRect().left+character.clientWidth/2+"px";
+            c.style.top = character.getBoundingClientRect().top+character.clientHeight/2+"px";
+            c.style.background = random(["#3b82f6", "#8b5cf6", "#ffffff", "#a855f7"]);
+            c.style.setProperty("--x", (Math.random()*500-250)+"px");
+            c.style.setProperty("--y", (Math.random()*400-200)+"px");
+            document.body.appendChild(c);
+            setTimeout(()=>c.remove(),1600);
+        }
+    }
+    character.addEventListener("click",confetti);
 
   </script>
 </body>
