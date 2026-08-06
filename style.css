@@ -56,7 +56,7 @@ margin:auto;
 }
 
 /*======================
-BACKGROUND & PERSISTENT CHARACTER
+BACKGROUND & GRADIENTS
 =======================*/
 .background{
 position:fixed;
@@ -78,8 +78,11 @@ animation:floatBlob 12s ease-in-out infinite;
 .gradient2{ width:400px; height:400px; background:#d7ecff; right:-100px; bottom:5%; animation-delay:4s; }
 .gradient3{ width:320px; height:320px; background:#ffe5f4; left:40%; top:35%; animation-delay:8s; }
 
+/*======================
+FIXED & FLOATING CHARACTER (Menyatu & Melayang)
+=======================*/
 .persistent-character-container{
-position: absolute;
+position: fixed;
 bottom: 0;
 left: 0;
 right: 0;
@@ -87,22 +90,23 @@ display: flex;
 justify-content: center;
 align-items: flex-end;
 z-index: 1;
-pointer-events: auto;
+pointer-events: none;
 }
 
 #character{
 width: 100%;
-max-width: 750px;
-height: 70vh;
+max-width: 820px;
+height: 78vh;
 object-fit: contain;
 object-position: bottom center;
+pointer-events: auto;
 cursor: pointer;
 user-select: none;
-filter: drop-shadow(0 15px 25px rgba(93,169,255,0.2));
+filter: drop-shadow(0 15px 25px rgba(93,169,255,0.25));
 animation: characterFloat 4s ease-in-out infinite;
 transition: .35s;
-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0.15) 95%, rgba(0,0,0,0) 100%);
--webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0.15) 95%, rgba(0,0,0,0) 100%);
+mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0.2) 92%, rgba(0,0,0,0) 100%);
+-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0.2) 92%, rgba(0,0,0,0) 100%);
 }
 
 #character:hover{
@@ -111,24 +115,18 @@ transform: scale(1.02);
 
 #characterBubble{
 position: absolute;
-bottom: 55vh;
+bottom: 60vh;
 background: #fff;
 padding: 10px 16px;
 border-radius: 14px;
 font-weight: 800;
 border: 2px solid var(--border);
 box-shadow: var(--shadow);
-opacity: 0;
-transform: translateY(10px);
-transition: .3s;
+transition: opacity 0.3s ease, transform 0.3s ease;
 font-size: 0.85rem;
 pointer-events: none;
 z-index: 10;
-}
-
-#characterBubble.show{
 opacity: 1;
-transform: translateY(0);
 }
 
 #characterBubble::after{
@@ -145,16 +143,16 @@ transform: rotate(45deg);
 }
 
 /*======================
-HEADER & TAB BAR
+HEADER & TAB BAR (Tanpa pembatas atas)
 =======================*/
 header{
-padding:18px 0;
+padding:16px 0;
 position:sticky;
 top:0;
 z-index:1000;
 backdrop-filter:blur(18px);
-background: rgba(255, 255, 255, 0.7);
-border-bottom: 2px solid rgba(30, 43, 66, 0.1);
+background: rgba(255, 255, 255, 0.85);
+border-bottom: none;
 }
 
 .nav-container{
@@ -218,7 +216,7 @@ PAGES / TABS SYSTEM
 =======================*/
 .page {
 display: none;
-padding: 30px 0;
+padding: 20px 0;
 opacity: 0;
 transform: translateY(10px);
 transition: opacity 0.3s ease, transform 0.3s ease;
@@ -231,24 +229,30 @@ transform: translateY(0);
 }
 
 /*======================
-HERO CONTENT
+HERO CONTENT (Tombol & Stats di Bawah)
 =======================*/
 .hero-content{
 display: flex;
 flex-direction: column;
 align-items: center;
-justify-content: flex-start;
-gap: 16px;
-padding-top: 10px;
+justify-content: flex-end;
+min-height: calc(100vh - 150px);
+padding-bottom: 25px;
 }
 
 .hero-actions{
 display: flex;
 flex-direction: column;
 align-items: center;
-gap: 14px;
+gap: 12px;
 width: 100%;
-max-width: 400px;
+max-width: 420px;
+background: rgba(255, 255, 255, 0.75);
+backdrop-filter: blur(12px);
+padding: 16px;
+border-radius: 20px;
+border: 2px solid var(--border);
+box-shadow: var(--shadow);
 }
 
 .pixel-btn.small-btn{
@@ -273,11 +277,11 @@ box-shadow: 1px 1px 0 var(--border);
 }
 
 /*======================
-STATS
+STATS (Di bawah tombol)
 =======================*/
 .stats.small-stats{
 display: flex;
-gap: 10px;
+gap: 8px;
 justify-content: center;
 width: 100%;
 }
@@ -285,8 +289,8 @@ width: 100%;
 .stat{
 background: #ffffffdd;
 backdrop-filter: blur(10px);
-padding: 10px 12px;
-border-radius: 14px;
+padding: 8px 10px;
+border-radius: 12px;
 border: 2px solid var(--border);
 box-shadow: var(--shadow);
 flex: 1;
@@ -295,14 +299,14 @@ text-align: center;
 
 .stat h2{
 font-family: "Cherry Bomb One", cursive;
-font-size: 1.3rem;
+font-size: 1.2rem;
 color: #4b8dff;
 }
 
 .stat span{
 display: block;
 margin-top: 2px;
-font-size: 0.75rem;
+font-size: 0.7rem;
 font-weight: 700;
 color: var(--muted);
 }
@@ -313,12 +317,13 @@ display:grid;
 grid-template-columns:1.1fr .9fr;
 gap:40px;
 align-items:center;
-background: rgba(255,255,255,0.8);
+background: rgba(255,255,255,0.85);
 padding: 30px;
 border-radius: 20px;
 border: 2px solid var(--border);
 box-shadow: var(--shadow);
 backdrop-filter: blur(10px);
+margin-top: 20px;
 }
 
 .about p{
@@ -349,10 +354,10 @@ text-align: center;
 FOOTER
 =======================*/
 footer{
-padding:20px 0;
+padding:16px 0;
 background:#ffffff66;
 backdrop-filter:blur(16px);
-border-top:2px solid rgba(255,255,255,.6);
+border-top: none;
 margin-top: auto;
 position: relative;
 z-index: 3;
@@ -379,7 +384,7 @@ ANIMATIONS
 
 @keyframes characterFloat{
 0%,100%{ transform:translateY(0); }
-50%{ transform:translateY(-8px); }
+50%{ transform:translateY(-10px); }
 }
 
 /*======================
@@ -390,7 +395,7 @@ RESPONSIVE
 nav{
 display:none;
 position:absolute;
-top:75px;
+top:70px;
 left:4%;
 right:4%;
 flex-direction:column;
@@ -400,5 +405,5 @@ background: #fff;
 }
 nav.show{ display:flex; }
 .about{ grid-template-columns:1fr; }
-#character{ height: 60vh; max-width: 100%; }
+#character{ height: 65vh; max-width: 100%; }
            }
