@@ -23,14 +23,17 @@
     <div class="gradient gradient1"></div>
     <div class="gradient gradient2"></div>
     <div class="gradient gradient3"></div>
-    <div id="sparkles"></div>
+    <!-- Persistent Character Background Layer -->
+    <div class="persistent-character-container">
+        <img id="character" src="chara.png" alt="Lenathea Character">
+        <div id="characterBubble">✨ Welcome to Lenathea</div>
+    </div>
 </div>
 
 <header>
     <div class="container nav-container">
         <a href="#" class="logo">LENATHEA</a>
         
-        <!-- Tab Bar Navigation (API & Services removed) -->
         <nav id="navbar">
             <button class="tab-btn active" data-target="home">Home</button>
             <button class="tab-btn" data-target="about">About</button>
@@ -46,23 +49,11 @@
 <main>
     <!-- HOME PAGE TAB -->
     <section id="home" class="page active">
-        <div class="container hero-grid">
-            <!-- CHARACTER -->
-            <div class="hero-left">
-                <div class="character-wrapper">
-                    <img id="character" src="chara.png" alt="Lenathea Character">
-                    <div id="characterBubble" class="show">✨ Welcome to Lenathea</div>
-                </div>
-            </div>
+        <div class="container hero-content">
+            <div class="hero-actions">
+                <button class="pixel-btn small-btn">Documentation</button>
 
-            <!-- RIGHT (Teks dihapus, sisa tombol & stats) -->
-            <div class="hero-right">
-                <div class="hero-buttons">
-                    <button class="pixel-btn">Documentation</button>
-                    <button class="pixel-btn outline">Services</button>
-                </div>
-
-                <div class="stats">
+                <div class="stats small-stats">
                     <div class="stat">
                         <h2>500+</h2>
                         <span>Endpoints</span>
@@ -105,7 +96,7 @@
             <p style="color: var(--muted); line-height: 1.8; margin-bottom: 30px;">
                 Punya pertanyaan atau ingin berkolaborasi? Hubungi tim kami melalui platform developer atau social media resmi Lenathea.
             </p>
-            <a href="#" class="pixel-btn">Contact Support</a>
+            <a href="#" class="pixel-btn small-btn">Contact Support</a>
         </div>
     </section>
 </main>
@@ -119,4 +110,4 @@
 
 <script src="script.js"></script>
 </body>
-</html>
+    </html>
