@@ -35,7 +35,7 @@ if (menuBtn && navbar) {
     });
 }
 
-// Interactive Character Bubble
+// Interactive Character Bubble (Persist across tabs)
 const character = document.getElementById('character');
 const characterBubble = document.getElementById('characterBubble');
 
@@ -56,4 +56,4 @@ if (character && characterBubble) {
             characterBubble.classList.remove('show');
         }, 2500);
     });
-}
+    }
