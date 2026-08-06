@@ -14,12 +14,11 @@ function switchTab(targetId) {
 }
 
 // Tab navigation event listener
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const target = btn.getAttribute('data-target');
+document.querySelectorAll('.tab-btn').forEach(b => {
+    b.addEventListener('click', () => {
+        const target = b.getAttribute('data-target');
         switchTab(target);
 
-        // Hide mobile menu if open
         const navbar = document.getElementById('navbar');
         if (navbar.classList.contains('show')) {
             navbar.classList.remove('show');
@@ -36,16 +35,15 @@ if (menuBtn && navbar) {
     });
 }
 
-// Interactive Character Bubble Greeting Messages
+// Interactive Character Bubble
 const character = document.getElementById('character');
 const characterBubble = document.getElementById('characterBubble');
 
 const greetings = [
     "✨ Welcome to Lenathea!",
-    "🚀 Ready to use our API?",
+    "🚀 Ready to use our platform?",
     "💙 Have a great day!",
-    "🤖 Check out our WhatsApp Bot!",
-    "⚡ Powered & Fast!"
+    "⚡ Fast & Minimalist!"
 ];
 
 if (character && characterBubble) {
@@ -58,4 +56,4 @@ if (character && characterBubble) {
             characterBubble.classList.remove('show');
         }, 2500);
     });
-                         }
+}
