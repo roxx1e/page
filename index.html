@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Lenathea API Platform</title>
-
     <meta name="description" content="Modern WhatsApp Bot & Realtime API Platform">
     <meta name="theme-color" content="#dceefe">
 
     <!-- Cute Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <!-- Remix Icon -->
@@ -20,418 +17,155 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="background">
     <div class="gradient gradient1"></div>
     <div class="gradient gradient2"></div>
     <div class="gradient gradient3"></div>
-
     <div id="sparkles"></div>
 </div>
 
-
 <header>
+    <div class="container nav-container">
+        <a href="#" class="logo">LENATHEA</a>
+        
+        <!-- Tab Bar Navigation -->
+        <nav id="navbar">
+            <button class="tab-btn active" data-target="home">Home</button>
+            <button class="tab-btn" data-target="services">Services</button>
+            <button class="tab-btn" data-target="api">API</button>
+            <button class="tab-btn" data-target="about">About</button>
+            <button class="tab-btn" data-target="contact">Contact</button>
+        </nav>
 
-<div class="container nav">
-
-    <a href="#" class="logo">
-        LENATHEA
-    </a>
-
-    <nav id="navbar">
-
-        <a class="active" href="#home">Home</a>
-
-        <a href="#services">Services</a>
-
-        <a href="#api">API</a>
-
-        <a href="#about">About</a>
-
-        <a href="#contact">Contact</a>
-
-    </nav>
-
-    <button id="menuBtn">
-
-        <i class="ri-menu-3-line"></i>
-
-    </button>
-
-</div>
-
+        <button id="menuBtn">
+            <i class="ri-menu-3-line"></i>
+        </button>
+    </div>
 </header>
 
-
-
-<main id="home">
-
-<section class="hero">
-
-<div class="container hero-grid">
-
-
-<!-- CHARACTER -->
-
-<div class="hero-left">
-
-<div class="character-wrapper">
-
-<img
-id="character"
-src="https://m-lea-9212.vercel.app/chara.png"
-alt="Lenathea Character">
-
-<div id="characterBubble">
-
-✨ Welcome
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- RIGHT -->
-
-<div class="hero-right">
-
-<div class="pixel-dots">
-
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-
-<h1>
-
-WE ARE THE FUTURE
-
-</h1>
-
-
-<div class="subtitle">
-
-DIVE INTO NEW WORLD
-
-</div>
-
-
-<p>
-
-Kami menyediakan API gratis yang powerful untuk para developer dan Bot WhatsApp multifungsi yang dapat diakses oleh semua pengguna.
-
-Bangun masa depan digitalmu bersama kami.
-
-</p>
-
-
-<div class="hero-buttons">
-
-<a href="#api" class="pixel-btn">
-
-Documentation
-
-</a>
-
-<a href="#services" class="pixel-btn outline">
-
-Services
-
-</a>
-
-</div>
-
-
-
-<div class="stats">
-
-<div class="stat">
-
-<h2>
-
-500+
-
-</h2>
-
-<span>
-
-Endpoints
-
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<h2>
-
-99%
-
-</h2>
-
-<span>
-
-Uptime
-
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<h2>
-
-15M
-
-</h2>
-
-<span>
-
-Requests
-
-</span>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-
-<section id="services">
-
-<div class="container">
-
-<div class="section-title">
-
-OUR SERVICES
-
-</div>
-
-
-<div class="services-grid">
-
-
-<div class="service-card">
-
-<i class="ri-robot-2-fill"></i>
-
-<h3>
-
-Artificial Intelligence
-
-</h3>
-
-<p>
-
-Chat AI, GPT, Gemini, Claude, Vision, Image Generation dan berbagai model AI terbaru.
-
-</p>
-
-</div>
-
-
-
-<div class="service-card">
-
-<i class="ri-whatsapp-fill"></i>
-
-<h3>
-
-WhatsApp Bot
-
-</h3>
-
-<p>
-
-Bot WhatsApp modern dengan ratusan fitur, game, AI, downloader dan automation.
-
-</p>
-
-</div>
-
-
-
-<div class="service-card">
-
-<i class="ri-code-box-fill"></i>
-
-<h3>
-
-Realtime API
-
-</h3>
-
-<p>
-
-REST API realtime dengan response cepat dan endpoint yang terus bertambah.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-
-<section id="api">
-
-<div class="container">
-
-<div class="section-title">
-
-POPULAR APIs
-
-</div>
-
-<div class="api-grid">
-
-<div class="api-box">
-
-AI
-
-</div>
-
-<div class="api-box">
-
-Downloader
-
-</div>
-
-<div class="api-box">
-
-Anime
-
-</div>
-
-<div class="api-box">
-
-Search
-
-</div>
-
-<div class="api-box">
-
-Games
-
-</div>
-
-<div class="api-box">
-
-Tools
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-
-<section id="about">
-
-<div class="container about">
-
-<div>
-
-<div class="section-title">
-
-ABOUT LENATHEA
-
-</div>
-
-<p>
-
-Lenathea merupakan platform yang menyediakan REST API realtime, WhatsApp Bot, AI Assistant, Downloader serta berbagai layanan developer yang cepat, ringan dan mudah digunakan.
-
-</p>
-
-</div>
-
-
-<div class="about-box">
-
-<div>
-
-⚡ Fast Response
-
-</div>
-
-<div>
-
-🛡 Stable Server
-
-</div>
-
-<div>
-
-☁ Cloud Powered
-
-</div>
-
-<div>
-
-💙 Free API
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
+<main>
+    <!-- HOME PAGE TAB -->
+    <section id="home" class="page active">
+        <div class="container hero-grid">
+            <!-- CHARACTER -->
+            <div class="hero-left">
+                <div class="character-wrapper">
+                    <img id="character" src="https://m-lea-9212.vercel.app/chara.png" alt="Lenathea Character">
+                    <div id="characterBubble" class="show">✨ Welcome to Lenathea</div>
+                </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="hero-right">
+                <div class="pixel-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <h1>WE ARE THE FUTURE</h1>
+                <div class="subtitle">DIVE INTO NEW WORLD</div>
+                <p>
+                    Kami menyediakan API gratis yang powerful untuk para developer dan Bot WhatsApp multifungsi yang dapat diakses oleh semua pengguna. Bangun masa depan digitalmu bersama kami.
+                </p>
+                <div class="hero-buttons">
+                    <button class="pixel-btn" onclick="switchTab('api')">Documentation</button>
+                    <button class="pixel-btn outline" onclick="switchTab('services')">Services</button>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <h2>500+</h2>
+                        <span>Endpoints</span>
+                    </div>
+                    <div class="stat">
+                        <h2>99%</h2>
+                        <span>Uptime</span>
+                    </div>
+                    <div class="stat">
+                        <h2>15M</h2>
+                        <span>Requests</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES PAGE TAB -->
+    <section id="services" class="page">
+        <div class="container">
+            <div class="section-title">OUR SERVICES</div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="ri-robot-2-fill"></i>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Chat AI, GPT, Gemini, Claude, Vision, Image Generation dan berbagai model AI terbaru.</p>
+                </div>
+                <div class="service-card">
+                    <i class="ri-whatsapp-fill"></i>
+                    <h3>WhatsApp Bot</h3>
+                    <p>Bot WhatsApp modern dengan ratusan fitur, game, AI, downloader dan automation.</p>
+                </div>
+                <div class="service-card">
+                    <i class="ri-code-box-fill"></i>
+                    <h3>Realtime API</h3>
+                    <p>REST API realtime dengan response cepat dan endpoint yang terus bertambah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API PAGE TAB -->
+    <section id="api" class="page">
+        <div class="container">
+            <div class="section-title">POPULAR APIS</div>
+            <div class="api-grid">
+                <div class="api-box">AI</div>
+                <div class="api-box">Downloader</div>
+                <div class="api-box">Anime</div>
+                <div class="api-box">Search</div>
+                <div class="api-box">Games</div>
+                <div class="api-box">Tools</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT PAGE TAB -->
+    <section id="about" class="page">
+        <div class="container about">
+            <div>
+                <div class="section-title" style="text-align: left; margin-bottom: 20px;">ABOUT LENATHEA</div>
+                <p>
+                    Lenathea merupakan platform yang menyediakan REST API realtime, WhatsApp Bot, AI Assistant, Downloader serta berbagai layanan developer yang cepat, ringan dan mudah digunakan.
+                </p>
+            </div>
+            <div class="about-box">
+                <div>⚡ Fast Response</div>
+                <div>🛡 Stable Server</div>
+                <div>☁ Cloud Powered</div>
+                <div>💙 Free API</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT PAGE TAB -->
+    <section id="contact" class="page">
+        <div class="container" style="text-align: center; max-width: 600px;">
+            <div class="section-title">GET IN TOUCH</div>
+            <p style="color: var(--muted); line-height: 1.8; margin-bottom: 30px;">
+                Punya pertanyaan atau ingin berkolaborasi? Hubungi tim kami melalui platform developer atau social media resmi Lenathea.
+            </p>
+            <a href="#" class="pixel-btn">Contact Support</a>
+        </div>
+    </section>
 </main>
 
-
-
-<footer id="contact">
-
-<div class="container footer">
-
-<div>
-
-© 2026 Lenathea Platform
-
-</div>
-
-<div>
-
-Made with 💙 for Developers
-
-</div>
-
-</div>
-
+<footer>
+    <div class="container footer">
+        <div>© 2026 Lenathea Platform</div>
+        <div>Made with 💙 for Developers</div>
+    </div>
 </footer>
 
-
-
 <script src="script.js"></script>
-
 </body>
-  </html>
+    </html>
