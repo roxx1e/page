@@ -4,66 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lenathea • WhatsApp Bot & Realtime API</title>
-  <meta name="description" content="Modern WhatsApp Bot & Realtime REST API Platform">
   <meta name="theme-color" content="#e0f2fe">
   
+  <!-- Fonts: Fredoka untuk teks biasa & VT323 untuk gaya Retro/Pixel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=VT323&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 
   <style>
     /* ==========================================================
-       CSS STYLES - LIGHT PASTEL THEME
+       CSS STYLES - RETRO PIXEL & PASTEL THEME
     ========================================================== */
     :root {
-      /* Warna Background Pastel */
       --bg-top: #e0f2fe;    
       --bg-mid: #fae8ff;    
       --bg-bot: #ffe4e6;    
       
-      /* Warna Teks dan Elemen */
       --text: #1e293b;      
       --text-muted: #475569;
       --white: #ffffff;
       
-      /* Warna Aksen (Tombol & Kotak) */
-      --primary: #3b82f6;   
+      /* Tombol Retro Biru Konsisten */
+      --retro-blue: #38bdf8;
+      --retro-blue-hover: #0ea5e9;
       --shadow-color: #000000; 
       
-      /* 3 Kotak Warna Warni */
       --box-yellow: #fef08a;
       --box-green: #bbf7d0;
       --box-purple: #e9d5ff;
-
-      /* Kaca / Glassmorphism */
-      --glass-bg: rgba(255, 255, 255, 0.6);
-      --glass-border: rgba(255, 255, 255, 0.9);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     
     body {
-      font-family: "Quicksand", sans-serif;
+      font-family: "Fredoka", sans-serif;
       background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bot) 100%);
       color: var(--text);
       overflow-x: hidden;
       min-height: 100vh;
       position: relative;
-      opacity: 0;
-      transition: opacity .6s;
     }
-    body.ready { opacity: 1; }
+
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
 
-    /* Background Effects */
+    /* Background Elements */
     .background { position: fixed; inset: 0; overflow: hidden; z-index: -10; }
-    .blur { position: absolute; border-radius: 50%; filter: blur(80px); animation: blob 12s ease-in-out infinite; opacity: 0.7; }
+    .blur { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.7; }
     .blur-1 { width: 400px; height: 400px; background: rgba(255,255,255,0.8); left: -100px; top: -100px; } 
-    .blur-2 { width: 350px; height: 350px; background: rgba(255,255,255,0.8); right: -100px; bottom: 10%; animation-delay: 3s; } 
-    .blur-3 { width: 300px; height: 300px; background: #bae6fd; left: 40%; top: 40%; animation-delay: 6s; }
+    .blur-2 { width: 350px; height: 350px; background: rgba(255,255,255,0.8); right: -100px; bottom: 10%; } 
 
     /* ==========================================================
        TOP NAVIGATION
@@ -73,26 +64,28 @@
       margin: 20px auto; width: min(1200px, 92%); position: relative; z-index: 10000; 
     }
     .logo { 
-      font-family: "Fredoka"; font-size: 2rem; font-weight: 700; color: var(--primary); 
+      font-family: "VT323", monospace; font-size: 2.5rem; font-weight: 700; color: #0284c7; 
       text-shadow: 2px 2px 0px var(--shadow-color); 
+      letter-spacing: 2px;
     }
     
     nav { 
-      display: flex; gap: 15px; position: relative; z-index: 9999; 
-      background: var(--white); padding: 5px 15px; border-radius: 999px;
-      border: 2px solid var(--shadow-color);
+      display: flex; gap: 10px; position: relative; z-index: 9999; 
+      background: var(--white); padding: 5px 12px; border-radius: 999px;
+      border: 3px solid var(--shadow-color);
       box-shadow: 3px 3px 0px var(--shadow-color);
     }
     nav a { 
-      color: var(--text); font-weight: 700; padding: 8px 16px; border-radius: 999px;
-      transition: .2s; cursor: pointer; font-size: 0.9rem;
+      color: var(--text); font-weight: 700; padding: 6px 14px; border-radius: 999px;
+      transition: .2s; cursor: pointer; font-size: 0.95rem;
     }
     nav a:hover, nav a.active-tab { 
-      background: var(--primary); color: var(--white); 
+      background: var(--retro-blue); color: var(--shadow-color); 
+      border: 2px solid var(--shadow-color);
     }
 
     /* ==========================================================
-       HERO SECTION 
+       HERO SECTION (KARAKTER MENJADI FOKUS UTAMA)
     ========================================================== */
     .hero { 
       width: min(1200px, 92%); margin: 0 auto; min-height: 85vh; 
@@ -100,140 +93,152 @@
     }
     .hero-container { 
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 25px; flex: 1; text-align: center; position: relative; z-index: 1; 
-      margin-bottom: 50px;
+      gap: 15px; flex: 1; text-align: center; position: relative; z-index: 1; 
+      padding-bottom: 30px;
     }
 
-    /* Top Bubble */
-    .bubble-top {
-      background: var(--white);
-      padding: 15px 40px;
-      border-radius: 20px;
-      font-family: "Fredoka", sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      font-weight: 700;
-      color: var(--text);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      position: relative;
-      animation: float-slow 4s ease-in-out infinite;
+    /* Judul Retro Pixel (Gaya WE ARE THE FUTURE) */
+    .retro-title {
+      font-family: "VT323", monospace;
+      font-size: clamp(3rem, 7vw, 5rem);
+      color: #0284c7;
+      text-shadow: 3px 3px 0px var(--shadow-color);
+      letter-spacing: 3px;
+      line-height: 1;
+      margin-top: 5px;
     }
 
-    /* Character & Animations */
-    @keyframes characterFloat {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(2deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
+    /* Karakter Utama: Tinggi 70-85% & Transparan murni tanpa kotak */
+    .character-card { 
+      position: relative; 
+      width: 100%; 
+      max-width: 450px; 
+      height: 55vh; 
+      max-height: 500px;
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      margin: 10px 0;
     }
-
-    .character-card { position: relative; width: 300px; display: flex; justify-content: center; align-items: center; }
     #character { 
-      width: 320px; height: auto; cursor: pointer; 
-      position: relative; z-index: 2; transition: .35s; 
-      filter: drop-shadow(0 15px 20px rgba(0,0,0,0.15)); 
-      animation: characterFloat 4s ease-in-out infinite;
+      width: 100%; 
+      height: 100%; 
+      object-fit: contain; 
+      cursor: pointer; 
+      position: relative; 
+      z-index: 2; 
+      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2)); 
+      animation: float-char 4s ease-in-out infinite;
     }
-    #character:hover { transform: scale(1.05) translateY(-10px) !important; animation-play-state: paused; }
-    #character.clicked { animation: clickPose .45s ease; }
+    #character:hover { transform: scale(1.03); }
     
-    .dialog { position: absolute; top: 10px; right: -20px; background: white; color: #222; padding: 10px 15px; border-radius: 16px; font-weight: 700; opacity: 0; transform: translateY(20px); transition: .3s; z-index: 10; box-shadow: 0 10px 20px rgba(0,0,0,.15); }
-    .dialog.show { opacity: 1; transform: translateY(0); }
-    .dialog::after { content: ""; position: absolute; bottom: -6px; left: 20px; width: 14px; height: 14px; background: white; transform: rotate(45deg); }
+    @keyframes float-char {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
 
-    /* 3 Colored Squares */
+    .dialog { 
+      position: absolute; top: 0; right: 10%; background: white; color: #222; 
+      padding: 8px 14px; border-radius: 12px; font-weight: 700; opacity: 0; 
+      transform: translateY(15px); transition: .3s; z-index: 10; 
+      border: 2px solid var(--shadow-color);
+      box-shadow: 2px 2px 0px var(--shadow-color);
+    }
+    .dialog.show { opacity: 1; transform: translateY(0); }
+
+    /* Tombol Retro Konsisten (Gaya seperti tombol Documentation di referensi) */
+    .retro-btn {
+      background: var(--retro-blue);
+      color: var(--shadow-color);
+      padding: 12px 35px;
+      border-radius: 12px;
+      font-family: "VT323", monospace;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      font-weight: 700;
+      border: 3px solid var(--shadow-color);
+      box-shadow: 4px 4px 0px var(--shadow-color);
+      cursor: pointer;
+      transition: all 0.1s ease;
+      display: inline-block;
+    }
+    .retro-btn:hover {
+      background: var(--retro-blue-hover);
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--shadow-color);
+    }
+    .retro-btn:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0px 0px 0px var(--shadow-color);
+    }
+
+    /* 3 Kotak Warna Warni */
     .colored-squares {
       display: flex;
-      gap: 15px;
-      margin-top: 10px;
+      gap: 12px;
+      margin: 5px 0;
     }
     .sq {
-      width: 65px; height: 65px;
-      border-radius: 12px;
+      width: 60px; height: 60px;
+      border-radius: 10px;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 1rem; color: var(--text);
-      border: 2px solid var(--shadow-color);
+      font-weight: 700; font-size: 1.1rem; color: var(--text);
+      border: 3px solid var(--shadow-color);
       box-shadow: 3px 3px 0px var(--shadow-color); 
-      transition: .2s;
+      font-family: "VT323", monospace;
     }
-    .sq:hover { transform: translateY(-3px); box-shadow: 5px 5px 0px var(--shadow-color); }
-    .sq span { font-size: 0.65rem; font-weight: 600; opacity: 0.8; margin-top: 2px; }
+    .sq span { font-size: 0.7rem; font-weight: 600; margin-top: -3px; }
     .sq-1 { background: var(--box-yellow); }
     .sq-2 { background: var(--box-green); }
     .sq-3 { background: var(--box-purple); }
 
-    /* Main Button */
-    .main-btn {
-      background: var(--primary);
-      color: var(--white);
-      padding: 16px 60px;
-      border-radius: 999px;
-      font-family: "Fredoka", sans-serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      border: 3px solid var(--shadow-color);
-      box-shadow: 4px 4px 0px var(--shadow-color);
-      margin-top: 15px;
-      cursor: pointer;
-      transition: all 0.2s;
-      letter-spacing: 1px;
-    }
-    .main-btn:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0px var(--shadow-color);
-    }
-
     /* ==========================================================
-       OTHER SECTIONS (FEATURES, API, ABOUT) 
+       SECTION LAIN (FEATURES, API, ABOUT)
     ========================================================== */
-    section { width: min(1200px, 92%); margin: auto; padding: 90px 0; }
-    .section-tag { display: inline-flex; padding: 8px 18px; border-radius: 999px; background: var(--white); border: 2px solid var(--shadow-color); font-weight: 700; font-size: 13px; margin-bottom: 15px; box-shadow: 2px 2px 0px var(--shadow-color); }
-    .section-header { text-align: center; max-width: 700px; margin: auto auto 50px; }
-    .section-header h2 { font-family: "Fredoka", sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 15px; }
-    .section-header p { color: var(--text-muted); line-height: 1.8; }
-
-    .title { font-family: "Fredoka", sans-serif; font-size: 42px; text-align: center; margin-bottom: 55px; }
-    
-    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-    .feature, .stat-box, .glass-card { 
-      background: var(--glass-bg); backdrop-filter: blur(20px); 
-      border: 2px solid var(--glass-border); border-radius: 28px; padding: 35px; 
-      transition: .35s; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    section { width: min(1200px, 92%); margin: auto; padding: 70px 0; }
+    .section-tag { 
+      display: inline-flex; padding: 6px 16px; border-radius: 999px; 
+      background: var(--white); border: 3px solid var(--shadow-color); 
+      font-weight: 700; font-size: 13px; margin-bottom: 15px; 
+      box-shadow: 3px 3px 0px var(--shadow-color); 
     }
-    .feature:hover, .stat-box:hover, .glass-card:hover { transform: translateY(-8px); border-color: var(--white); background: var(--white); }
-    .feature i, .glass-card i { font-size: 46px; margin-bottom: 20px; display: inline-block; color: var(--primary); }
-    .feature h2, .glass-card h3 { font-size: 24px; margin-bottom: 12px; font-family: "Fredoka", sans-serif; }
-    .feature p, .glass-card p { line-height: 1.8; color: var(--text-muted); margin-bottom: 20px; }
-    .feature span { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: #dcfce7; color: #15803d; font-weight: 700; font-size: 13px; }
-    .feature span::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #22c55e; animation: pulseDot 1.5s infinite; }
+    .section-header { text-align: center; max-width: 700px; margin: auto auto 40px; }
+    .section-header h2 { font-family: "VT323", monospace; font-size: 3rem; margin-bottom: 10px; color: #0284c7; text-shadow: 2px 2px 0px var(--shadow-color); }
+    .section-header p { color: var(--text-muted); line-height: 1.6; font-weight: 600; }
 
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-top: 45px; text-align: center;}
-    .stat-box h2 { font-family: "Fredoka"; font-size: 52px; color: var(--primary); margin-bottom: 10px; }
-    .stat-box p { color: var(--text-muted); font-weight: 600; }
+    .title { font-family: "VT323", monospace; font-size: 3.5xl; text-align: center; margin-bottom: 40px; color: #0284c7; text-shadow: 2px 2px 0px var(--shadow-color); }
+    
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature, .stat-box, .glass-card { 
+      background: rgba(255, 255, 255, 0.7); 
+      border: 3px solid var(--shadow-color); border-radius: 20px; padding: 25px; 
+      box-shadow: 4px 4px 0px var(--shadow-color);
+      transition: .2s;
+    }
+    .feature:hover, .stat-box:hover, .glass-card:hover { transform: translateY(-4px); background: var(--white); box-shadow: 6px 6px 0px var(--shadow-color); }
+    .feature i, .glass-card i { font-size: 40px; margin-bottom: 15px; display: inline-block; color: #0284c7; }
+    .feature h2, .glass-card h3 { font-size: 22px; margin-bottom: 10px; font-family: "Fredoka", sans-serif; font-weight: 700; }
+    .feature p, .glass-card p { line-height: 1.6; color: var(--text-muted); margin-bottom: 15px; font-size: 0.95rem; font-weight: 600; }
+    .feature span { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: #dcfce7; color: #15803d; font-weight: 700; font-size: 12px; border: 2px solid var(--shadow-color); }
 
-    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: center; }
-    .about h2 { font-size: 48px; margin-bottom: 20px; font-family: "Fredoka"; }
-    .about p { color: var(--text-muted); line-height: 1.9; margin-bottom: 25px; font-weight: 500;}
-    .about ul { list-style: none; display: grid; gap: 15px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 30px; text-align: center;}
+    .stat-box h2 { font-family: "VT323", monospace; font-size: 4rem; color: #0284c7; text-shadow: 2px 2px 0px var(--shadow-color); margin-bottom: 5px; }
+    .stat-box p { color: var(--text-muted); font-weight: 700; }
+
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .about h2 { font-size: 3rem; font-family: "VT323", monospace; color: #0284c7; text-shadow: 2px 2px 0px var(--shadow-color); margin-bottom: 15px; }
+    .about p { color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; font-weight: 600;}
+    .about ul { list-style: none; display: grid; gap: 12px; }
     .about li { display: flex; align-items: center; gap: 10px; font-weight: 700; }
-    .about li i { color: var(--primary); font-size: 20px; }
-    .about-right { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .about li i { color: #0284c7; font-size: 18px; }
+    .about-right { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
 
-    /* FOOTER (CLEANED) */
-    footer { padding: 40px 20px; text-align: center; position: relative; z-index: 10; background: rgba(255,255,255,0.3); }
-    .copyright { color: var(--text-muted); font-size: 14px; font-weight: 600; margin-top: 10px; }
-
-    /* Effects & Animations */
-    #sakura { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-    .sakura { position: absolute; width: 16px; height: 16px; background: linear-gradient(135deg, #ffb6c1, #ff69b4); clip-path: polygon(50% 0%, 65% 30%, 100% 50%, 65% 70%, 50% 100%, 35% 70%, 0% 50%, 35% 30%); opacity: .8; animation: fall linear forwards, rotatePetal linear infinite; }
-    .hidden { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform .8s ease; }
-    .show { opacity: 1; transform: translateY(0); }
-    .spark { position: fixed; width: 8px; height: 8px; border-radius: 50%; pointer-events: none; background: #fff; box-shadow: 0 0 10px #ffb6c1; animation: sparkFly .9s forwards; transform: translate(var(--x), var(--y)); z-index: 9999; }
-    .heart { position: fixed; font-size: 20px; pointer-events: none; animation: heartFly 1.4s forwards; transform: translate(var(--x), var(--y)); z-index: 99999; text-shadow: 0 0 5px rgba(0,0,0,0.2); }
-    .confetti { position: fixed; width: 10px; height: 10px; border-radius: 3px; pointer-events: none; animation: confettiFly 1.6s forwards; z-index: 99999; }
+    footer { padding: 30px 20px; text-align: center; background: rgba(255,255,255,0.4); border-top: 3px solid var(--shadow-color); }
+    .copyright { color: var(--text-muted); font-size: 14px; font-weight: 700; }
 
     /* Mobile Nav Toggle */
-    .menu-toggle { display: none; width: 48px; height: 48px; border: none; outline: none; cursor: pointer; border-radius: 12px; font-size: 24px; background: var(--white); border: 2px solid var(--shadow-color); color: var(--text); position: relative; z-index: 10000; box-shadow: 2px 2px 0px var(--shadow-color); }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: none; outline: none; cursor: pointer; border-radius: 10px; font-size: 22px; background: var(--white); border: 3px solid var(--shadow-color); color: var(--text); box-shadow: 2px 2px 0px var(--shadow-color); }
 
-    /* Responsiveness */
     @media (max-width: 1024px) {
       .about { grid-template-columns: 1fr; }
       .about-right { grid-template-columns: repeat(2, 1fr); }
@@ -242,27 +247,19 @@
       
       nav { display: none; }
       .menu-toggle { display: flex; justify-content: center; align-items: center; }
-      nav { position: absolute; left: 0; right: 0; top: 70px; display: flex; flex-direction: column; gap: 10px; background: var(--white); border-radius: 20px; padding: 20px; opacity: 0; visibility: hidden; transform: translateY(-20px); transition: .35s; z-index: 9999; border: 2px solid var(--shadow-color); box-shadow: 5px 5px 0px var(--shadow-color); }
+      nav { position: absolute; left: 0; right: 0; top: 65px; display: flex; flex-direction: column; gap: 8px; background: var(--white); border-radius: 16px; padding: 15px; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: .3s; z-index: 9999; border: 3px solid var(--shadow-color); box-shadow: 4px 4px 0px var(--shadow-color); }
       nav.active { opacity: 1; visibility: visible; transform: translateY(0); }
-      nav a { padding: 12px; border-radius: 10px; border: 2px solid transparent; text-align: center; }
-      nav a:hover, nav a.active-tab { background: var(--primary); border-color: var(--shadow-color); }
+      nav a { padding: 10px; text-align: center; }
     }
     @media (max-width: 700px) {
       .feature-grid, .stats-grid, .about-right { grid-template-columns: 1fr; }
-      .bubble-top { font-size: 1.2rem; padding: 12px 25px; }
-      #character { width: 250px; }
+      .character-card { height: 45vh; }
     }
 
-    /* Keyframes */
-    @keyframes float-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-    @keyframes blob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(20px); } }
-    @keyframes pulseDot { 0% { transform: scale(.8); opacity: .6; } 50% { transform: scale(1.5); opacity: 1; } 100% { transform: scale(.8); opacity: .6; } }
-    @keyframes clickPose { 0% { transform: scale(1); } 50% { transform: scale(.93) rotate(-3deg); } 100% { transform: scale(1); } }
-    @keyframes fall { from { transform: translateY(-100px) rotate(0); opacity: 0; } 10% { opacity: 1; } to { transform: translateY(110vh) translateX(120px) rotate(360deg); opacity: 0; } }
-    @keyframes rotatePetal { from { rotate: 0deg; } to { rotate: 360deg; } }
+    .hidden { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+    .show { opacity: 1; transform: translateY(0); }
+    .spark { position: fixed; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; background: #38bdf8; border: 1px solid #000; animation: sparkFly .8s forwards; transform: translate(var(--x), var(--y)); z-index: 9999; }
     @keyframes sparkFly { 0% { opacity: 1; transform: translate(0,0) scale(1); } 100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(0); } }
-    @keyframes heartFly { 0% { opacity: 1; transform: translate(0,0) scale(.5); } 100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(2); } }
-    @keyframes confettiFly { 0% { opacity: 1; transform: translate(0,0) rotate(0deg); } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(1080deg); } }
   </style>
 </head>
 <body>
@@ -271,8 +268,6 @@
   <div class="background">
     <div class="blur blur-1"></div>
     <div class="blur blur-2"></div>
-    <div class="blur blur-3"></div>
-    <div id="sakura"></div>
   </div>
 
   <!-- Header & Top Nav -->
@@ -283,7 +278,6 @@
       <a href="#features">Features</a>
       <a href="#api">API</a>
       <a href="#about">About</a>
-      <a href="#contact">Contact</a>
     </nav>
   </div>
 
@@ -291,33 +285,31 @@
   <header class="hero tab-section" id="home">
     <div class="hero-container">
       
-      <!-- Top Text Box -->
-      <div class="bubble-top">
-        Lenathea API Platform
-      </div>
-
-      <!-- Character (Updated Link & CSS Animation) -->
+      <!-- Character Hero (Memenuhi 70-85% section, transparan murni, tanpa box/container) -->
       <div class="character-card">
         <img id="character" src="https://banner2.cleanpng.com/lnd/20240920/ka/6ec8d33fa2c376f9b81e3e65b5ea10.webp" alt="Lenathea">
         <div id="dialog" class="dialog">Hai~ 👋</div>
       </div>
 
-      <!-- Three Stat Squares (Yellow, Green, Purple) -->
+      <!-- Judul Pixel Retro (WE ARE THE FUTURE) -->
+      <h1 class="retro-title">WE ARE THE FUTURE</h1>
+
+      <!-- Three Stat Squares -->
       <div class="colored-squares">
-        <div class="sq sq-1">500+<span>Endpoints</span></div>
+        <div class="sq sq-1">500+<span>APIs</span></div>
         <div class="sq sq-2">99%<span>Uptime</span></div>
-        <div class="sq sq-3">15M<span>Requests</span></div>
+        <div class="sq sq-3">15M<span>Req</span></div>
       </div>
 
-      <!-- Main Action Button -->
-      <a href="#features" class="main-btn nav-btn">Explore API</a>
+      <!-- Tombol Retro Konsisten -->
+      <a href="#features" class="retro-btn nav-btn">DIVE INTO NEW WORLD</a>
       
     </div>
   </header>
 
   <!-- FEATURES SECTION -->
   <section id="features" class="features tab-section">
-    <div class="title">Realtime Services</div>
+    <div class="title" style="font-size: 3rem;">REALTIME SERVICES</div>
     <div class="feature-grid">
       <div class="feature">
         <i class="ri-robot-2-fill"></i>
@@ -362,7 +354,7 @@
   <section class="statistics tab-section" id="api">
     <div class="section-header">
       <span class="section-tag">Platform Statistics</span>
-      <h2>Trusted by Thousands of Developers</h2>
+      <h2>TRUSTED BY DEVELOPERS</h2>
       <p>Fast, stable and scalable infrastructure for every project.</p>
     </div>
     <div class="stats-grid">
@@ -389,13 +381,13 @@
   <section id="about" class="about tab-section">
     <div class="about-left">
       <span class="section-tag">ABOUT LENATHEA</span>
-      <h2>More than just a WhatsApp Bot</h2>
+      <h2>MORE THAN JUST A BOT</h2>
       <p>Lenathea adalah platform developer modern yang menyediakan REST API, Bot WhatsApp, AI Assistant, Downloader, Search Engine, dan berbagai layanan otomatisasi dengan tampilan yang cepat, ringan, dan mudah digunakan.</p>
       <ul>
-        <li><i class="ri-check-line"></i> High Performance API</li>
-        <li><i class="ri-check-line"></i> Fast AI Response</li>
-        <li><i class="ri-check-line"></i> Modern Dashboard</li>
-        <li><i class="ri-check-line"></i> Easy Integration</li>
+        <li><i class="ri-checkbox-fill"></i> High Performance API</li>
+        <li><i class="ri-checkbox-fill"></i> Fast AI Response</li>
+        <li><i class="ri-checkbox-fill"></i> Modern Dashboard</li>
+        <li><i class="ri-checkbox-fill"></i> Easy Integration</li>
       </ul>
     </div>
     <div class="about-right">
@@ -422,17 +414,15 @@
     </div>
   </section>
 
-  <!-- FOOTER (Cleaned up) -->
-  <footer id="contact">
+  <!-- FOOTER -->
+  <footer>
     <div class="copyright">
       © 2026 Lenathea. Made with ❤️ for Developers.
     </div>
   </footer>
 
   <script>
-    /* ==========================================================
-       TAB NAVIGATION SYSTEM (SPA LOGIC)
-    ========================================================== */
+    /* TAB NAVIGATION SYSTEM (SPA LOGIC) */
     const allNavLinks = document.querySelectorAll('nav a, .nav-btn');
     const secHero = document.getElementById('home');
     const secFeatures = document.getElementById('features');
@@ -455,8 +445,6 @@
             if(secAPI) secAPI.style.display = 'block';
         } else if(targetId === '#about') {
             if(secAbout) secAbout.style.display = 'grid'; 
-        } else if(targetId === '#contact') {
-            if(secHero) secHero.style.display = 'flex';
         } else {
             if(secHero) secHero.style.display = 'flex'; 
         }
@@ -470,11 +458,10 @@
             const target = link.getAttribute('href');
             if(target && target.startsWith('#')) {
                 if(target === '#') return;
-                if (target !== '#contact') {
-                    e.preventDefault();
-                    switchTab(target);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
+                e.preventDefault();
+                switchTab(target);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
                 const nav = document.querySelector('nav');
                 if(nav && nav.classList.contains('active')) {
                     nav.classList.remove('active');
@@ -483,57 +470,44 @@
         });
     });
 
-    /* ==========================================================
-       CHARACTER INTERACTION & ANIMATIONS
-    ========================================================== */
+    /* CHARACTER INTERACTION */
     const character = document.getElementById("character");
     const dialog = document.getElementById("dialog");
-    let clickCount = 0; let busy = false; let totalClick = 0;
+    let busy = false;
 
     const messages = [
         "Hai~ 👋", "Selamat datang 💙", "Mau coba API-ku? ✨", 
         "Bot siap membantu 😄", "Semoga harimu menyenangkan 🌸", 
-        "Realtime API Online 🚀", "Klik lagi dong 😆", 
-        "Aku lagi standby nih~", "Let's build something amazing!"
+        "Realtime API Online 🚀", "Klik lagi dong 😆"
     ];
-
-    function random(array){ return array[Math.floor(Math.random()*array.length)]; }
 
     function showDialog(text){
         dialog.innerHTML = text;
         dialog.classList.add("show");
         clearTimeout(dialog.timer);
-        dialog.timer = setTimeout(()=>{ dialog.classList.remove("show"); },2200);
+        dialog.timer = setTimeout(()=>{ dialog.classList.remove("show"); },2000);
     }
 
-    function interactCharacter(){
+    character.addEventListener("click", ()=>{
         if(busy) return;
-        busy = true; clickCount++; totalClick++;
-        character.classList.add("clicked");
-        showDialog(random(messages));
-        createSpark();
-        setTimeout(()=>{
-            character.classList.remove("clicked");
-            busy = false;
-        },1500);
-    }
-    character.addEventListener("click", interactCharacter);
-
-    function createSpark(){
-        for(let i=0;i<8;i++){
-            const spark=document.createElement("span");
-            spark.className="spark";
-            spark.style.left = character.offsetLeft+character.clientWidth/2+"px";
-            spark.style.top = character.offsetTop+character.clientHeight/2+"px";
-            spark.style.setProperty("--x", (Math.random()*200-100)+"px");
-            spark.style.setProperty("--y", (Math.random()*200-100)+"px");
+        busy = true;
+        showDialog(messages[Math.floor(Math.random() * messages.length)]);
+        
+        for(let i=0; i<6; i++){
+            const spark = document.createElement("span");
+            spark.className = "spark";
+            spark.style.left = character.getBoundingClientRect().left + character.clientWidth/2 + "px";
+            spark.style.top = character.getBoundingClientRect().top + character.clientHeight/2 + "px";
+            spark.style.setProperty("--x", (Math.random()*160-80) + "px");
+            spark.style.setProperty("--y", (Math.random()*160-80) + "px");
             document.body.appendChild(spark);
-            setTimeout(()=>spark.remove(),900);
+            setTimeout(()=>spark.remove(), 800);
         }
-    }
+        setTimeout(()=> busy = false, 1000);
+    });
 
     /* SCROLL REVEAL */
-    const revealItems = document.querySelectorAll(".feature,.glass-card,.stat-box,.about-left,.about-right");
+    const revealItems = document.querySelectorAll(".feature, .stat-box, .glass-card, .about-left, .about-right");
     const revealObserver = new IntersectionObserver((entries)=>{
         entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add("show"); });
     }, { threshold:.15 });
@@ -545,134 +519,26 @@
         entries.forEach(entry=>{
             if(!entry.isIntersecting) return;
             const el = entry.target; const target = +el.dataset.target;
-            let current = 0; const speed = target/80;
-            const update=()=>{
-                current+=speed;
-                if(current<target){
+            let current = 0; const speed = target/60;
+            const update = ()=>{
+                current += speed;
+                if(current < target){
                     el.innerText = Math.floor(current);
                     requestAnimationFrame(update);
-                }else{ el.innerText = target.toLocaleString(); }
+                } else { el.innerText = target.toLocaleString(); }
             };
             update(); observer.unobserve(el);
         });
     }, { threshold:.5 });
-    counters.forEach(c=>observer.observe(c));
+    counters.forEach(c => observer.observe(c));
 
-    /* SAKURA PETALS */
-    const sakura = document.getElementById("sakura");
-    function createPetal(){
-        const petal = document.createElement("span");
-        petal.className="sakura";
-        petal.style.left = Math.random()*100+"vw";
-        petal.style.animationDuration = 6+Math.random()*6+"s";
-        petal.style.opacity = Math.random() * 0.7;
-        petal.style.scale = 0.5+Math.random();
-        sakura.appendChild(petal);
-        setTimeout(()=>petal.remove(),12000);
-    }
-    setInterval(createPetal, 600);
-
-    /* PAGE LOAD & MOBILE MENU */
-    window.addEventListener("load",()=>{
-        document.body.classList.add("ready");
-    });
-    
-    const nav = document.querySelector("nav");
+    /* MOBILE MENU TOGGLE */
+    const navEl = document.querySelector("nav");
     const menuBtn = document.createElement("button");
-    menuBtn.className="menu-toggle";
-    menuBtn.innerHTML="<i class='ri-menu-line'></i>";
+    menuBtn.className = "menu-toggle";
+    menuBtn.innerHTML = "<i class='ri-menu-line'></i>";
     document.querySelector(".hero-top").appendChild(menuBtn);
-    menuBtn.addEventListener("click",()=>{ nav.classList.toggle("active"); });
-
-    /* DOUBLE TAP HEART EXPLOSION */
-    let lastTap = 0;
-    character.addEventListener("click",()=>{
-        const now = Date.now();
-        if(now-lastTap < 300){
-            showDialog("double tap!! ❤️");
-            for(let i=0;i<15;i++){
-                const h=document.createElement("span");
-                h.className="heart"; h.innerHTML="❤"; h.style.color="#f43f5e";
-                h.style.left = character.getBoundingClientRect().left+character.clientWidth/2+"px";
-                h.style.top = character.getBoundingClientRect().top+character.clientHeight/2+"px";
-                h.style.setProperty("--x", (Math.random()*240-120)+"px");
-                h.style.setProperty("--y", (Math.random()*240-120)+"px");
-                document.body.appendChild(h);
-                setTimeout(()=>h.remove(),1400);
-            }
-        }
-        lastTap=now;
-    });
-
-    /* AUTO TYPING DIALOG */
-    const dialogPool = [
-        "hai~ 👋", "selamat datang di lenathea ✨", "api sedang online 🚀",
-        "mau coba fitur ai? 💙", "aku siap membantu 😊", "happy coding ❤️",
-        "semoga harimu menyenangkan 🌸", "wah kamu balik lagi 😄",
-        "bot standby 24 jam ⚡", "let's build something amazing!"
-    ];
-    let typing = false;
-    async function typeDialog(text){
-        if(typing) return;
-        typing = true;
-        dialog.classList.add("show");
-        dialog.innerHTML="";
-        for(let i=0;i<text.length;i++){
-            dialog.innerHTML += text[i];
-            await new Promise(r=>setTimeout(r,35));
-        }
-        setTimeout(()=>{
-            dialog.classList.remove("show");
-            typing=false;
-        },2500);
-    }
-    setInterval(()=>{
-        if(busy) return;
-        if(Math.random()>.7) typeDialog(random(dialogPool));
-    },9000);
-
-    /* RANDOM IDLE TALK */
-    const idleTalk = [
-        "✨ Welcome~", "💙 API Online", "😊 Hi Developer!",
-        "🌸 Let's Build!", "❤️ Need Help?", "⚡ Fast Response",
-        "🚀 Explore API", "☕ Coffee Time?", "😴 I'm still here.",
-        "🎉 Nice to meet you!"
-    ];
-    let idleTimer;
-    function randomTalk(){
-        clearTimeout(idleTimer);
-        idleTimer=setTimeout(()=>{
-            if(busy)return;
-            typeDialog(random(idleTalk));
-        },7000+Math.random()*7000);
-    }
-    randomTalk();
-    document.addEventListener("mousemove",randomTalk);
-    document.addEventListener("touchstart",randomTalk);
-
-    /* GLOW FOLLOW CHARACTER */
-    document.addEventListener("mousemove",(e)=>{
-        const x=(e.clientX/window.innerWidth-.5)*8;
-        const y=(e.clientY/window.innerHeight-.5)*8;
-        character.style.filter = `drop-shadow(${x}px ${y}px 30px rgba(59,130,246,.25))`;
-    });
-
-    /* CONFETTI ON CLICK */
-    function confetti(){
-        for(let i=0;i<35;i++){
-            const c=document.createElement("span");
-            c.className="confetti";
-            c.style.left = character.getBoundingClientRect().left+character.clientWidth/2+"px";
-            c.style.top = character.getBoundingClientRect().top+character.clientHeight/2+"px";
-            c.style.background = random(["#3b82f6", "#8b5cf6", "#ffffff", "#a855f7"]);
-            c.style.setProperty("--x", (Math.random()*500-250)+"px");
-            c.style.setProperty("--y", (Math.random()*400-200)+"px");
-            document.body.appendChild(c);
-            setTimeout(()=>c.remove(),1600);
-        }
-    }
-    character.addEventListener("click",confetti);
-
+    menuBtn.addEventListener("click", ()=> navEl.classList.toggle("active"));
   </script>
 </body>
-  </html>
+          </html>
