@@ -50,25 +50,6 @@ function initTabs() {
 }
 
 // 3. Efek Bintang (Kawaii Background)
-function createStars() {
-    const container = document.getElementById('stars-container');
-    const starCount = 30;
-    const characters = ['✦', '✧', '★', '☆'];
-
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.innerText = characters[Math.floor(Math.random() * characters.length)];
-        
-        star.style.left = `${Math.random() * 100}vw`;
-        star.style.top = `${Math.random() * 100}vh`;
-        star.style.fontSize = `${Math.random() * 1.5 + 0.5}rem`;
-        star.style.animationDuration = `${Math.random() * 2 + 1}s`;
-        star.style.animationDelay = `${Math.random() * 2}s`;
-        
-        container.appendChild(star);
-    }
-}
 
 // 4. Efek Sentuhan/Klik (Ripple)
 function initClickEffect() {
