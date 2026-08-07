@@ -47,8 +47,10 @@ function initTypingEffect() {
     if (!textElement) return;
 
     const messages = [
-        "✨ Selamat datang di web Lea!",
-        "Halo, Aku Lea! 👋 Asisten WhatsApp pintar yang siap membantu mengelola grup dan membalas pesanmu secara otomatis!"
+        "✨ Selamat datang kak",
+        "Halo, Perkenalkan Nama Aku Lea",
+        "Ada Adalah Whatsapp Bot Pintar Yang Bisa Membantu",
+        "Kalau Mau Coba Fitur Atau Beriteraksi Denganku Klick Tombol Di Bawah Ya <3"
     ];
     
     let messageIndex = 0;
