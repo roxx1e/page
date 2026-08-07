@@ -1,426 +1,113 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <!-- Import Google Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lenathea API Platform</title>
+    <meta name="description" content="Modern WhatsApp Bot & Realtime API Platform">
+    <meta name="theme-color" content="#dceefe">
+
+    <!-- Cute Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Alex+Brush&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        /* === RESET & GLOBAL STYLES === */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f8f8; /* Warna dasar */
-            /* Menggunakan background pattern ringan untuk meniru tekstur kertas */
-            background-image: url('https://www.transparenttextures.com/patterns/crumpled-paper.png');
-            color: #000;
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-        }
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 
-        .container {
-            width: 100%;
-            max-width: 1440px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        /* === NAVIGATION BAR === */
-        header {
-            padding: 30px 5%;
-            position: relative;
-            z-index: 10;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #000;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        nav a.active {
-            background-color: #000;
-            color: #fff;
-            padding: 8px 24px;
-            border-radius: 30px;
-        }
-
-        .divider {
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .info-icon {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 16px;
-            height: 16px;
-            background: #000;
-            color: #fff;
-            border-radius: 50%;
-            font-size: 0.6rem;
-            margin-left: 5px;
-            font-style: normal;
-        }
-
-        /* === MAIN CONTENT === */
-        main {
-            display: flex;
-            flex: 1;
-            position: relative;
-        }
-
-        /* LEFT CONTENT */
-        .left-content {
-            width: 55%;
-            padding: 20px 5% 50px 5%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            z-index: 5;
-        }
-
-        /* Background Text "MEGUMI" */
-        .bg-text {
-            position: absolute;
-            top: 50px;
-            left: 5%;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14vw;
-            font-weight: 900;
-            color: transparent;
-            -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.08);
-            z-index: -1;
-            line-height: 1;
-            pointer-events: none;
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            margin-top: 60px;
-        }
-
-        .sub-heading {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            max-width: 450px;
-            line-height: 1.4;
-        }
-
-        .description {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            max-width: 500px;
-            color: #222;
-        }
-
-        .anime-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .thumbnail {
-            width: 60px;
-            height: 35px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .signature {
-            font-family: 'Alex Brush', cursive;
-            font-size: 3.5rem;
-            margin: 10px 0 30px 0;
-            transform: rotate(-5deg);
-        }
-
-        .buttons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .btn {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.8rem;
-            padding: 12px 28px;
-            border-radius: 30px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-dark {
-            background-color: #000;
-            color: #fff;
-            border: 2px solid #000;
-        }
-
-        .btn-dark:hover {
-            background-color: transparent;
-            color: #000;
-        }
-
-        .btn-light {
-            background-color: transparent;
-            color: #000;
-            border: 2px solid #000;
-        }
-
-        .btn-light:hover {
-            background-color: #000;
-            color: #fff;
-        }
-
-        .footer-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-top: auto;
-        }
-
-        .footer-left .cursive-text {
-            font-family: 'Alex Brush', cursive;
-            font-size: 1.8rem;
-        }
-
-        .footer-left .handle {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.8rem;
-        }
-
-        /* RIGHT CONTENT */
-        .right-content {
-            width: 45%;
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-end;
-            z-index: 2;
-        }
-
-        /* The Diagonal White Shape */
-        .diagonal-bg {
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 120%;
-            height: 100%;
-            background-color: #fff;
-            /* Membuat potongan miring */
-            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
-            box-shadow: -10px 0 20px rgba(0,0,0,0.05); /* Sedikit bayangan */
-            z-index: 1;
-        }
-
-        .character-img {
-            position: relative;
-            z-index: 3;
-            height: 95%; /* Sesuaikan tinggi gambar karakter */
-            object-fit: contain;
-            margin-right: 5%;
-        }
-
-        /* Pagination Dots */
-        .pagination {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 4;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            background-color: #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .dot.active {
-            background-color: #000;
-        }
-
-        /* Bottom Right Text */
-        .bottom-right-text {
-            position: absolute;
-            bottom: 30px;
-            right: 40px;
-            text-align: right;
-            z-index: 4;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .bottom-right-text p {
-            color: #d1566e; /* Warna merah muda / pink */
-            font-size: 0.9rem;
-            line-height: 1.2;
-        }
-
-        .bottom-right-text strong {
-            font-size: 1.2rem;
-            font-weight: 900;
-        }
-
-        /* === RESPONSIVE MOBILE & TABLET === */
-        @media screen and (max-width: 1024px) {
-            h1 { font-size: 3.5rem; }
-            .bg-text { font-size: 18vw; }
-            .character-img { height: 80%; }
-        }
-
-        @media screen and (max-width: 768px) {
-            nav {
-                flex-wrap: wrap;
-                gap: 15px;
-                justify-content: center;
-            }
-            .divider { display: none; }
-            
-            main {
-                flex-direction: column;
-            }
-            
-            .left-content {
-                width: 100%;
-                padding: 20px 5%;
-                align-items: center;
-                text-align: center;
-            }
-
-            .sub-heading, .description {
-                text-align: center;
-            }
-
-            .anime-info {
-                flex-direction: column;
-            }
-            
-            .bg-text {
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 25vw;
-            }
-
-            .right-content {
-                position: relative;
-                width: 100%;
-                height: 600px;
-                justify-content: center;
-            }
-
-            .diagonal-bg {
-                width: 100%;
-                clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
-            }
-
-            .character-img {
-                height: 100%;
-                margin-right: 0;
-            }
-
-            .bottom-right-text {
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <!-- Header / Navbar -->
-        <header>
-            <nav>
-                <a href="#" class="active">HOME</a>
-                <a href="#">SHOP</a>
-                <span class="divider">|</span>
-                <a href="#">INFO <i class="info-icon">i</i></a>
-            </nav>
-        </header>
+<div class="background">
+    <div class="gradient gradient1"></div>
+    <div class="gradient gradient2"></div>
+    <div class="gradient gradient3"></div>
+</div>
 
-        <!-- Main Content -->
-        <main>
-            <!-- Kolom Kiri -->
-            <div class="left-content">
-                <div class="bg-text">Lenathea</div>
-                
-                <h1>Dashboard</h1>
-                <p class="sub-heading">How does the heroine from Saekano continue to inspire fans worldwide?</p>
-                <div class="anime-info">
-                    <span><strong>Anime:</strong> Saekano: How to Raise a Boring Girlfriend</span>
-                    <!-- GANTI SRC DENGAN GAMBAR THUMBNAIL ASLI -->
-                </div>
+<!-- Fixed Position Character Layer -->
+<div class="persistent-character-container">
+    <img id="character" src="chara.png" alt="Lenathea Character">
+    <div id="characterBubble" class="show">✨ Welcome to Lenathea!</div>
+</div>
 
-                <div class="signature">Lenathea</div>
+<header>
+    <div class="container nav-container">
+        <a href="#" class="logo">LENATHEA</a>
+        
+        <nav id="navbar">
+            <button class="tab-btn active" data-target="home">Home</button>
+            <button class="tab-btn" data-target="about">About</button>
+            <button class="tab-btn" data-target="contact">Contact</button>
+        </nav>
 
-                <div class="buttons">
-                    <button class="btn btn-dark">WATCH ANIME</button>
-                    <button class="btn btn-light">READ MANGA</button>
-                </div>
-
-                <div class="footer-left">
-                    <span class="cursive-text">Weekly on Pinterest</span>
-                    <span class="handle">@ferdinand.ananta</span>
-                </div>
-            </div>
-
-            <!-- Kolom Kanan -->
-
-                <div class="bottom-right-text">
-                    <p>SAEKANO<br><strong>HOW TO RAISE<br>A BORING<br>GIRLFRIEND</strong></p>
-                </div>
-            </div>
-        </main>
+        <button id="menuBtn">
+            <i class="ri-menu-3-line"></i>
+        </button>
     </div>
+</header>
 
+<main>
+    <!-- HOME PAGE TAB -->
+    <section id="home" class="page active">
+        <div class="container hero-content">
+            <div class="hero-actions">
+                <button class="pixel-btn small-btn">Documentation</button>
+
+                <div class="stats small-stats">
+                    <div class="stat">
+                        <h2>500+</h2>
+                        <span>Endpoints</span>
+                    </div>
+                    <div class="stat">
+                        <h2>99%</h2>
+                        <span>Uptime</span>
+                    </div>
+                    <div class="stat">
+                        <h2>15M</h2>
+                        <span>Requests</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT PAGE TAB -->
+    <section id="about" class="page">
+        <div class="container about">
+            <div>
+                <div class="section-title" style="text-align: left; margin-bottom: 20px;">ABOUT LENATHEA</div>
+                <p>
+                    Lenathea merupakan platform yang menyediakan REST API realtime, WhatsApp Bot, AI Assistant, Downloader serta berbagai layanan developer yang cepat, ringan dan mudah digunakan.
+                </p>
+            </div>
+            <div class="about-box">
+                <div>⚡ Fast Response</div>
+                <div>🛡 Stable Server</div>
+                <div>☁ Cloud Powered</div>
+                <div>💙 Free API</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT PAGE TAB -->
+    <section id="contact" class="page">
+        <div class="container" style="text-align: center; max-width: 600px;">
+            <div class="section-title">GET IN TOUCH</div>
+            <p style="color: var(--muted); line-height: 1.8; margin-bottom: 30px;">
+                Punya pertanyaan atau ingin berkolaborasi? Hubungi tim kami melalui platform developer atau social media resmi Lenathea.
+            </p>
+            <a href="#" class="pixel-btn small-btn">Contact Support</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer">
+        <div>© 2026 Lenathea</div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
-</html>
+        </html>
