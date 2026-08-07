@@ -33,22 +33,21 @@
         
         <!-- TAB 1: HOME -->
         <section id="home" class="tab-content active">
+            <!-- Chat Bubble dengan Efek Mengetik & Auto-Resizing -->
             <div class="chat-bubble-container">
-                <div class="chat-bubble">
-                    ✨ Welcome to Lenathea!
+                <div class="chat-bubble" id="chat-bubble-wrapper">
+                    <span id="chat-bubble-text"></span><span class="typing-cursor">|</span>
                 </div>
             </div>
 
+            <!-- Hero Character dengan Animasi Floating -->
             <div class="hero-character">
                 <img src="chara.png" alt="Lea Bot Character">
             </div>
 
-            <div class="intro-card">
-                <h1>Halo, Aku Lea! 👋</h1>
-                <p>Asisten WhatsApp pintar yang siap membantu mengelola grup dan menjawab otomatis dari chat kamu!</p>
-                <div class="status-indicator">
-                    <span class="dot"></span> API Aktif
-                </div>
+            <!-- Indikator API -->
+            <div class="status-indicator" style="margin-bottom: 2rem; margin-top: 1rem;">
+                <span class="dot" id="api-dot"></span> <span id="api-status-text">API Aktif & Berjalan</span>
             </div>
             
             <button class="btn-primary" id="btn-docs">Documentation</button>
@@ -104,4 +103,4 @@
 
     <script src="script.js"></script>
 </body>
-                </html>
+    </html>
