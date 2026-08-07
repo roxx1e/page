@@ -89,7 +89,7 @@ function initTypingEffect() {
     setTimeout(type, 1000);
 }
 
-// 4. Interaksi Karakter Menjadi Lebih Hidup
+// 4. Interaksi Karakter Menjadi Lebih Hidup & Dinamis
 function initCharacterInteraction() {
     const container = document.getElementById('character-container');
     const heart = document.getElementById('heart-effect');
@@ -102,7 +102,7 @@ function initCharacterInteraction() {
 
         setTimeout(() => {
             container.classList.remove('clicked');
-        }, 200);
+        }, 300);
 
         setTimeout(() => {
             heart.classList.remove('show');
@@ -124,20 +124,17 @@ function initMusicPlayer() {
 
     let isPlaying = false;
 
-    // Klik FAB untuk memunculkan/menyembunyikan panel musik
     fabBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         panel.classList.toggle('active');
     });
 
-    // Klik di luar panel untuk menutup panel
     document.addEventListener('click', (e) => {
         if (!panel.contains(e.target) && !fabBtn.contains(e.target)) {
             panel.classList.remove('active');
         }
     });
 
-    // Tombol Play/Pause Musik
     toggleBtn.addEventListener('click', () => {
         if (isPlaying) {
             audio.pause();
