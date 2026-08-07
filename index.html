@@ -8,12 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Animasi Bintang Background -->
-   <div class="clouds-container">
-    <div class="cloud cloud-1"></div>
-    <div class="cloud cloud-2"></div>
-    <div class="cloud cloud-3"></div>
-   </div>
+    <!-- Animasi Awan Background -->
+    <div class="clouds-container">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+    </div>
+    
     <!-- Efek Ripple saat klik -->
     <div id="click-ripple" class="ripple"></div>
 
@@ -36,24 +37,24 @@
         
         <!-- TAB 1: HOME -->
         <section id="home" class="tab-content active">
-            <!-- Chat Bubble dengan Efek Mengetik & Auto-Resizing -->
+            <!-- Chat Bubble dengan Efek Mengetik -->
             <div class="chat-bubble-container">
                 <div class="chat-bubble" id="chat-bubble-wrapper">
                     <span id="chat-bubble-text"></span><span class="typing-cursor">|</span>
                 </div>
             </div>
 
-            <!-- Hero Character dengan Animasi Floating -->
+            <!-- Hero Character dengan Animasi Floating & Drop Shadow -->
             <div class="hero-character">
                 <img src="chara.png" alt="Lea Bot Character">
             </div>
 
             <!-- Indikator API -->
             <div class="status-indicator" style="margin-bottom: 2rem; margin-top: 1rem;">
-                <span class="dot" id="api-dot"></span> <span id="api-status-text">API Aktif & Berjalan</span>
+                <span class="dot" id="api-dot"></span> <span id="api-status-text">Memeriksa API...</span>
             </div>
             
-            <button class="btn-primary" id="btn-docs">Documentation</button>
+            <button class="btn-primary" id="btn-docs">📚 Documentation</button>
         </section>
 
         <!-- TAB 2: STATS -->
@@ -96,14 +97,20 @@
         <section id="contact" class="tab-content">
             <h2 class="section-title">📬 Contact Owner</h2>
             <div class="intro-card">
-                <img src="chara.png" alt="Owner" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #1a1a2e; margin-bottom: 1rem; background: #b4aee8;">
+                <img src="chara.png" alt="Owner" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #2a6c8e; margin-bottom: 1rem; background: #e0f2fe;">
                 <p>Ada bug, request fitur, atau ingin custom bot untuk bisnismu? Hubungi saya kapan saja!</p>
                 <button class="btn-primary" style="margin-top: 15px;">Chat via WhatsApp</button>
             </div>
         </section>
 
+        <!-- Footer -->
+        <footer style="text-align: center; margin-top: 40px; padding-bottom: 20px; color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">
+            <p>Made with 🩵 for Lea Bot</p>
+            <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.8;">© 2026 All Rights Reserved</p>
+        </footer>
+
     </main>
 
     <script src="script.js"></script>
 </body>
-    </html>
+                </html>
