@@ -18,7 +18,7 @@
     <!-- Efek Ripple saat klik -->
     <div id="click-ripple" class="ripple"></div>
 
-    <!-- Navbar -->
+    <!-- Navbar (Tanpa Stats) -->
     <nav class="navbar animate-down">
         <div class="nav-brand">LEABOT</div>
         <button class="hamburger" id="hamburger">
@@ -26,7 +26,6 @@
         </button>
         <ul class="nav-links" id="nav-links">
             <li><a href="#" class="tab-link active" data-target="home">Home</a></li>
-            <li><a href="#" class="tab-link" data-target="stats">Stats</a></li>
             <li><a href="#" class="tab-link" data-target="projects">Projects</a></li>
             <li><a href="#" class="tab-link" data-target="contact">Contact</a></li>
         </ul>
@@ -44,66 +43,16 @@
                 </div>
             </div>
 
-            <!-- Hero Character (Lebih hidup dengan efek interaktif klik) -->
+            <!-- Hero Character -->
             <div class="hero-character animate-float-scale" id="character-container">
                 <img src="chara.png" alt="Lea Bot Character" id="chara-img">
                 <div class="heart-effect" id="heart-effect">💖</div>
             </div>
             
             <button class="btn-primary" id="btn-docs">📚 Documentation</button>
-
-            <!-- Music Player Widget di bawah tombol Documentation -->
-            <div class="music-player-card">
-                <div class="music-info">
-                    <div class="music-disc" id="music-disc">🎵</div>
-                    <div class="music-text">
-                        <span class="music-title">Lea's Theme Song</span>
-                        <span class="music-status" id="music-status">Ketuk untuk memutar 🎧</span>
-                    </div>
-                </div>
-                <button class="music-btn" id="music-toggle-btn">
-                    <span id="music-icon">▶</span>
-                </button>
-                <!-- Audio element (bisa diganti link musik mp3 Anda) -->
-                <audio id="bgm-audio" loop src="https://www.bensound.com/bensound-music/bensound-creativeminds.mp3"></audio>
-            </div>
         </section>
 
-        <!-- TAB 2: STATS -->
-        <section id="stats" class="tab-content">
-            <h2 class="section-title">📊 Realtime Stats</h2>
-            <div class="stats-section">
-                <div class="stat-card">
-                    <h3 class="stat-number" id="user-count" data-target="1500">0</h3>
-                    <p class="stat-label">Pengguna</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-number" id="group-count" data-target="750">0</h3>
-                    <p class="stat-label">Grup</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-number" id="server-uptime">...</h3>
-                    <p class="stat-label">Server Uptime</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-number" id="server-ram">...</h3>
-                    <p class="stat-label">RAM Terpakai</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-number">Linux</h3>
-                    <p class="stat-label">OS Platform</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-number">99%</h3>
-                    <p class="stat-label">Uptime Bot</p>
-                </div>
-            </div>
-            <div class="intro-card" style="margin-top: 2rem;">
-                <p>Statistik bot & server diambil secara real-time langsung dari server pusat Lea Bot.</p>
-            </div>
-        </section>
-
-        <!-- TAB 3: PROJECTS -->
+        <!-- TAB 2: PROJECTS -->
         <section id="projects" class="tab-content">
             <h2 class="section-title">✨ Other Projects</h2>
             <div class="intro-card">
@@ -117,7 +66,7 @@
             </div>
         </section>
 
-        <!-- TAB 4: CONTACT -->
+        <!-- TAB 3: CONTACT -->
         <section id="contact" class="tab-content">
             <h2 class="section-title">📬 Contact Owner</h2>
             <div class="intro-card">
@@ -135,6 +84,29 @@
 
     </main>
 
+    <!-- Floating Music Player (Kanan Bawah) -->
+    <div class="floating-music-wrapper">
+        <!-- Panel Kontrol yang Muncul Saat Diklik -->
+        <div class="music-panel" id="music-panel">
+            <div class="music-info">
+                <div class="music-disc" id="music-disc">🎵</div>
+                <div class="music-text">
+                    <span class="music-title">Lea's Theme</span>
+                    <span class="music-status" id="music-status">Ketuk play 🎧</span>
+                </div>
+            </div>
+            <button class="music-action-btn" id="music-toggle-btn">
+                <span id="music-icon">▶</span>
+            </button>
+        </div>
+        <!-- Tombol Ikon Mengambang -->
+        <button class="floating-music-fab" id="music-fab-btn" title="Buka Pemutar Musik">
+            🎵
+        </button>
+        <!-- Audio sumber dari folder music/ (sesuaikan nama file mp3 Anda nanti) -->
+        <audio id="bgm-audio" loop src="music/song.mp3"></audio>
+    </div>
+
     <script src="script.js"></script>
 </body>
-</html>
+    </html>
