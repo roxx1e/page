@@ -1,189 +1,283 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toru Asakura - GFX Design</title>
-    <!-- Import Google Fonts: Bebas Neue, Caveat, dan Manrope -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Cerydra HSR - UI Concept</title>
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            background-color: #e2f1f8; /* Background luar container */
-            font-family: 'Manrope', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background-color: #e5e7eb;
         }
-
-        /* Container utama dengan nuansa soft sky blue */
-        .app-container {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            height: 100vh;
-            max-height: 850px;
-            background: linear-gradient(180deg, #9fd3ef 0%, #cfeafb 45%, #eef8ff 100%);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        .font-condensed {
+            font-family: 'Teko', sans-serif;
+            letter-spacing: 1px;
         }
-
-        /* Dekorasi Background Abstrak - Blur Circle */
-        .app-container::before {
-            content: "";
-            position: absolute;
-            width: 550px;
-            height: 550px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, .18);
-            filter: blur(20px);
-            top: -180px;
-            right: -180px;
-            z-index: 0;
+        /* Custom Scrollbar for hiding if needed */
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Gradient for the top banner */
+        .banner-gradient {
+            background: linear-gradient(135deg, #185a8a 0%, #298fcb 50%, #104169 100%);
         }
-
-        /* Dekorasi Background Abstrak - Diagonal Shape */
-        .app-container::after {
-            content: "";
-            position: absolute;
-            width: 120px;
-            height: 120%;
-            background: rgba(255, 255, 255, .08);
-            transform: rotate(22deg);
-            left: 58%;
-            top: -10%;
-            z-index: 0;
+        .skill-icon-gradient {
+            background: linear-gradient(135deg, #10609a 0%, #2184c0 100%);
         }
-
-        @media (max-width: 450px) {
-            .app-container {
-                height: 100vh;
-                max-height: none;
-                box-shadow: none;
-            }
-        }
-
-        /* Hashtag */
-        .hashtag {
-            position: absolute;
-            top: 35px;
-            right: 35px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #1f2d3d;
-            z-index: 10;
-        }
-
-        /* Teks Belakang Besar (ASAKURA) */
-        .bg-text {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 180px;
-            letter-spacing: 6px;
-            color: #fff;
-            opacity: .95;
-            transform: translate(-50%, -50%) scaleY(1.65);
-            -webkit-text-stroke: 1px rgba(120, 185, 220, .5);
-            text-shadow: 10px 10px 0 rgba(126, 192, 228, .45);
-            z-index: 1;
-            white-space: nowrap;
-        }
-
-        /* Teks Sambung (Toru) */
-        .cursive-text {
-            position: absolute;
-            top: 8%;
-            left: 8%;
-            font-family: 'Caveat', cursive;
-            font-size: 95px;
-            font-weight: 700;
-            color: #111;
-            transform: rotate(-8deg);
-            z-index: 3;
-        }
-
-        /* Karakter Utama */
-        .character-img {
-            position: absolute;
-            width: 108%;
-            bottom: 0;
-            left: 52%;
-            transform: translateX(-50%);
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        /* Tooltip (Toru) */
-        .tooltip {
-            position: absolute;
-            bottom: 12%;
-            right: 15%;
-            background: #fff;
-            border: 3px solid #2d2d2d;
-            border-radius: 16px;
-            font-weight: 700;
-            font-size: 20px;
-            padding: 10px 28px;
-            box-shadow: 4px 4px 0 rgba(0, 0, 0, .08);
-            color: #222;
-            z-index: 10;
-        }
-
-        /* Ekor Tooltip (Panah Segitiga Hitam) */
-        .tooltip::before {
-            content: '';
-            position: absolute;
-            bottom: -16px;
-            left: 20px;
-            border-width: 15px 12px 0;
-            border-style: solid;
-            border-color: #2d2d2d transparent transparent transparent;
-        }
-
-        /* Ekor Tooltip (Panah Segitiga Putih Penutup) */
-        .tooltip::after {
-            content: '';
-            position: absolute;
-            bottom: -11px;
-            left: 22px;
-            border-width: 12px 10px 0;
-            border-style: solid;
-            border-color: #fff transparent transparent transparent;
-        }
-
     </style>
 </head>
-<body>
+<body class="flex items-center justify-center min-h-screen p-4 md:p-10">
 
-    <div class="app-container">
+    <!-- Main Container -->
+    <div class="relative w-full max-w-[1000px] bg-[#f2f5f9] rounded-[40px] p-6 shadow-2xl overflow-visible">
         
-        <!-- Hashtag -->
-        <div class="hashtag">#AnimeGFXDesign</div>
+        <!-- ================= TOP BANNER ================= -->
+        <div class="relative w-full h-[280px] banner-gradient rounded-3xl p-6 text-white shadow-lg overflow-hidden flex justify-between items-start mb-6">
+            <!-- Background abstract shapes (simulated) -->
+            <div class="absolute -top-10 -left-10 w-64 h-64 bg-white opacity-5 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#00d2ff] opacity-10 rounded-full blur-3xl"></div>
 
-        <!-- Teks Belakang (ASAKURA) -->
-        <div class="bg-text">
-            ASAKURA
+            <!-- Left Info -->
+            <div class="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-white text-[#185a8a] px-3 py-1 rounded-full text-xs font-semibold">Profile</span>
+                        <div class="flex gap-1 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <h1 class="font-condensed text-7xl md:text-8xl leading-none font-semibold mt-2 tracking-wide drop-shadow-md">CERYDRA</h1>
+                    <p class="text-sm font-light tracking-[0.2em] mt-1 text-blue-100 uppercase">Chessmaster Monarch</p>
+                </div>
+                <div class="text-xs font-light text-blue-200/80">
+                    <p>perasaan tadi mau ngedit C4D <span class="ml-4">@R4ADDX</span></p>
+                </div>
+            </div>
+
+            <!-- Center Character Image -->
+            <!-- Ganti URL ini dengan gambar karakter transparanmu -->
+            <img src="https://images.unsplash.com/photo-1615592389070-bcc97e05ad01?auto=format&fit=crop&q=80&w=800&ixlib=rb-4.0.3" 
+                 alt="Cerydra" 
+                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-auto h-[120%] object-cover object-top z-20 pointer-events-none drop-shadow-2xl mix-blend-luminosity opacity-80">
+            <!-- Note: I used a placeholder and CSS effects to simulate the anime character. Replace the src with your actual transparent PNG and remove mix-blend-luminosity/opacity -->
+
+            <!-- Right Info -->
+            <div class="relative z-10 flex flex-col items-end">
+                <i class="fa-solid fa-ellipsis text-xl mb-12 cursor-pointer"></i>
+                <div class="text-right border-t border-white/30 pt-2 mt-8">
+                    <p class="text-xs font-light mb-2">Combat Path</p>
+                    <div class="flex items-center gap-2">
+                        <!-- Placeholder Harmony Icon -->
+                        <div class="w-8 h-8 rounded-full border border-white/50 flex items-center justify-center">
+                            <i class="fa-brands fa-galactic-senate"></i>
+                        </div>
+                        <span class="font-medium text-lg">Harmony</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Teks Sambung (Toru) -->
-        <div class="cursive-text">Toru</div>
+        <!-- ================= MIDDLE SECTION ================= -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            
+            <!-- Left Column: Character Info & Gallery -->
+            <div class="md:col-span-4 flex flex-col gap-4">
+                <div class="bg-white rounded-[30px] shadow-sm overflow-hidden flex-grow flex flex-col pb-6">
+                    <!-- Top Tabs -->
+                    <div class="flex bg-[#2596be] text-white text-center font-medium">
+                        <div class="flex-1 py-3 bg-[#1e81a8] rounded-br-[20px] shadow-inner cursor-pointer">Character</div>
+                        <div class="flex-1 py-3 cursor-pointer text-white/70 hover:text-white transition">Info</div>
+                    </div>
+                    
+                    <div class="p-6 text-center">
+                        <p class="text-xs text-gray-400 italic mb-1">Cerydra is a playable character in</p>
+                        <h2 class="text-2xl font-bold text-gray-700 mb-6">Honkai: Star Rail</h2>
+                        
+                        <!-- Inner Tabs -->
+                        <div class="flex justify-center gap-6 text-sm font-medium mb-6">
+                            <span class="text-gray-300 cursor-pointer">Home</span>
+                            <span class="text-[#0d2a4a] border-b-2 border-[#0d2a4a] pb-1 cursor-pointer">Gallery</span>
+                            <span class="text-gray-300 cursor-pointer">Lore</span>
+                        </div>
 
-        <!-- KARAKTER UTAMA: Ganti src ini dengan gambar chara.png -->
-        <img src="chara.png" alt="Toru Asakura" class="character-img">
+                        <!-- Gallery Avatar -->
+                        <div class="relative w-40 h-40 mx-auto">
+                            <div class="w-full h-full rounded-full p-1 border-[3px] border-[#42b5de] overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1615592389070-bcc97e05ad01?auto=format&fit=crop&q=80&w=400" alt="Avatar" class="w-full h-full object-cover rounded-full">
+                            </div>
+                            <!-- Plus Button -->
+                            <div class="absolute bottom-1 right-1 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100 cursor-pointer text-[#42b5de] hover:bg-gray-50 transition">
+                                <i class="fa-solid fa-plus text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <!-- Tooltip Kanan Bawah -->
-        <div class="tooltip">Toru</div>
+            <!-- Center Column: Skills & Stats -->
+            <div class="md:col-span-6 flex flex-col gap-6">
+                <!-- Skill Icons Row -->
+                <div class="flex justify-between items-start px-2 gap-4">
+                    <div class="flex flex-col items-center gap-2 w-1/3">
+                        <div class="w-full aspect-square skill-icon-gradient rounded-2xl flex items-center justify-center shadow-md cursor-pointer hover:scale-105 transition">
+                            <i class="fa-solid fa-chess-rook text-4xl text-white drop-shadow-md"></i>
+                        </div>
+                        <p class="text-[11px] font-medium text-gray-600 text-center leading-tight">King's Castling</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 w-1/3">
+                        <div class="w-full aspect-square skill-icon-gradient rounded-2xl flex items-center justify-center shadow-md cursor-pointer hover:scale-105 transition">
+                            <i class="fa-solid fa-chess-pawn text-4xl text-white drop-shadow-md"></i>
+                        </div>
+                        <p class="text-[11px] font-medium text-gray-600 text-center leading-tight">Pawn's Promotion</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 w-1/3">
+                        <div class="w-full aspect-square skill-icon-gradient rounded-2xl flex items-center justify-center shadow-md cursor-pointer hover:scale-105 transition">
+                            <i class="fa-solid fa-certificate text-4xl text-white drop-shadow-md"></i>
+                        </div>
+                        <p class="text-[11px] font-medium text-gray-600 text-center leading-tight">Scholar's Mate</p>
+                    </div>
+                </div>
+
+                <!-- Statistic Chart -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm flex-grow relative overflow-hidden">
+                    <h3 class="text-[#2596be] font-semibold text-sm mb-4">Statistic</h3>
+                    <!-- Pure SVG Chart to match image exactly -->
+                    <div class="w-full h-32 relative">
+                        <svg viewBox="0 0 100 50" class="w-full h-full overflow-visible" preserveAspectRatio="none">
+                            <!-- Background Grid Lines -->
+                            <line x1="10" y1="0" x2="10" y2="40" stroke="#f0f0f0" stroke-width="0.5" />
+                            <line x1="30" y1="0" x2="30" y2="40" stroke="#f0f0f0" stroke-width="0.5" />
+                            <line x1="50" y1="0" x2="50" y2="40" stroke="#f0f0f0" stroke-width="0.5" />
+                            <line x1="70" y1="0" x2="70" y2="40" stroke="#f0f0f0" stroke-width="0.5" />
+                            <line x1="90" y1="0" x2="90" y2="40" stroke="#f0f0f0" stroke-width="0.5" />
+                            
+                            <!-- Area Fill -->
+                            <path d="M 10 30 C 20 20, 25 35, 30 35 C 40 35, 45 10, 50 15 C 60 25, 65 30, 70 20 C 80 0, 85 10, 90 5 L 90 40 L 10 40 Z" fill="#dcf1fb" opacity="0.6"/>
+                            
+                            <!-- Line -->
+                            <path d="M 10 30 C 20 20, 25 35, 30 35 C 40 35, 45 10, 50 15 C 60 25, 65 30, 70 20 C 80 0, 85 10, 90 5" fill="none" stroke="#3db6df" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            
+                            <!-- Points -->
+                            <circle cx="10" cy="30" r="1.5" fill="white" stroke="#3db6df" stroke-width="1"/>
+                            <circle cx="30" cy="35" r="1.5" fill="white" stroke="#3db6df" stroke-width="1"/>
+                            <circle cx="50" cy="15" r="1.5" fill="white" stroke="#3db6df" stroke-width="1"/>
+                            <circle cx="70" cy="20" r="1.5" fill="white" stroke="#3db6df" stroke-width="1"/>
+                            <circle cx="90" cy="5" r="1.5" fill="white" stroke="#3db6df" stroke-width="1"/>
+                        </svg>
+                        
+                        <!-- X Axis Labels -->
+                        <div class="flex justify-between px-1 text-[10px] text-[#3db6df] font-medium mt-2 absolute bottom-[-15px] w-full">
+                            <span>01</span>
+                            <span>02</span>
+                            <span>03</span>
+                            <span>04</span>
+                            <span>05</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Toggles & Actions -->
+            <div class="md:col-span-2 flex flex-col gap-6 items-center">
+                
+                <!-- Quick Settings Widget -->
+                <div class="bg-gradient-to-b from-[#185a8a] to-[#0c3154] w-full rounded-[24px] p-3 shadow-md">
+                    <div class="grid grid-cols-2 gap-2 h-[120px]">
+                        <!-- Airplane -->
+                        <div class="bg-white/10 rounded-xl flex items-center justify-center cursor-pointer hover:bg-white/20 transition text-white/50">
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <!-- Bluetooth (Active) -->
+                        <div class="bg-white rounded-xl flex items-center justify-center cursor-pointer shadow-inner text-[#185a8a]">
+                            <i class="fa-brands fa-bluetooth-b text-xl"></i>
+                        </div>
+                        <!-- Moon -->
+                        <div class="bg-white/10 rounded-xl flex items-center justify-center cursor-pointer hover:bg-white/20 transition text-white/50">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+                        <!-- Location -->
+                        <div class="bg-white/10 rounded-xl flex items-center justify-center cursor-pointer hover:bg-white/20 transition text-white/50">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons Column -->
+                <div class="bg-[#e4ebf1] w-full rounded-[40px] py-4 px-3 flex flex-col gap-3 items-center shadow-inner">
+                    <div class="w-[50px] h-[50px] bg-[#1a3a60] rounded-xl flex items-center justify-center cursor-pointer hover:bg-[#254f7a] transition shadow-md">
+                        <i class="fa-solid fa-bolt text-white text-xl"></i>
+                    </div>
+                    <div class="w-[50px] h-[50px] bg-[#1a3a60] rounded-xl flex items-center justify-center cursor-pointer hover:bg-[#254f7a] transition shadow-md">
+                        <i class="fa-solid fa-bomb text-white text-xl"></i>
+                    </div>
+                    <div class="w-[50px] h-[50px] bg-[#1a3a60] rounded-xl flex items-center justify-center cursor-pointer hover:bg-[#254f7a] transition shadow-md">
+                        <i class="fa-solid fa-gamepad text-white text-xl"></i>
+                    </div>
+                    <div class="w-[50px] h-[50px] bg-[#1a3a60] rounded-xl flex items-center justify-center cursor-pointer hover:bg-[#254f7a] transition shadow-md">
+                        <i class="fa-solid fa-puzzle-piece text-white text-xl"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= BOTTOM SECTION ================= -->
+        <div class="relative mt-8 bg-[#1374a5] rounded-3xl p-4 md:p-5 flex flex-col md:flex-row gap-4 items-stretch shadow-lg">
+            
+            <!-- Floating Top Label -->
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white px-6 py-1.5 rounded-full shadow-sm">
+                <span class="text-sm font-semibold text-[#0d2a4a]">Talent & Technique</span>
+            </div>
+
+            <!-- Card 1 -->
+            <div class="flex-1 bg-[#479cbd] bg-opacity-40 border border-[#6abde0] rounded-2xl p-4 flex flex-col justify-between mt-3 md:mt-0">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-chess-knight text-2xl text-white opacity-80"></i>
+                    <div>
+                        <h4 class="text-white font-medium text-sm">Ave Imperator</h4>
+                        <div class="w-8 h-[2px] bg-white/50 mt-1"></div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg px-4 py-2 mt-4 inline-block self-start shadow-sm">
+                    <span class="font-bold text-[#1374a5] text-xl">30%-66%</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flex-1 bg-[#479cbd] bg-opacity-40 border border-[#6abde0] rounded-2xl p-4 flex flex-col justify-between mt-3 md:mt-0">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-chess-board text-2xl text-white opacity-80"></i>
+                    <div>
+                        <h4 class="text-white font-medium text-sm leading-tight">First-Move<br>Advantage</h4>
+                        <div class="w-8 h-[2px] bg-white/50 mt-1"></div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg px-4 py-2 mt-4 inline-block self-start shadow-sm">
+                    <span class="font-bold text-[#1374a5] text-xl">599+</span>
+                </div>
+            </div>
+
+            <!-- Add Button Side -->
+            <div class="w-16 bg-white rounded-2xl flex items-center justify-center cursor-pointer shadow-sm hover:bg-gray-50 transition min-h-[100px] mt-3 md:mt-0">
+                <i class="fa-solid fa-plus text-3xl text-[#3db6df]"></i>
+            </div>
+            
+        </div>
 
     </div>
 
 </body>
-</html>
+                                </html>
