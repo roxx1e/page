@@ -44,17 +44,29 @@
                 </div>
             </div>
 
-            <!-- Hero Character (Diperbesar untuk mengisi ruang kosong) -->
-            <div class="hero-character animate-float-scale">
-                <img src="chara.png" alt="Lea Bot Character">
-            </div>
-
-            <!-- Indikator API -->
-            <div class="status-indicator" style="margin-bottom: 2rem; margin-top: 1rem;">
-                <span class="dot" id="api-dot"></span> <span id="api-status-text">Memeriksa API...</span>
+            <!-- Hero Character (Lebih hidup dengan efek interaktif klik) -->
+            <div class="hero-character animate-float-scale" id="character-container">
+                <img src="chara.png" alt="Lea Bot Character" id="chara-img">
+                <div class="heart-effect" id="heart-effect">💖</div>
             </div>
             
             <button class="btn-primary" id="btn-docs">📚 Documentation</button>
+
+            <!-- Music Player Widget di bawah tombol Documentation -->
+            <div class="music-player-card">
+                <div class="music-info">
+                    <div class="music-disc" id="music-disc">🎵</div>
+                    <div class="music-text">
+                        <span class="music-title">Lea's Theme Song</span>
+                        <span class="music-status" id="music-status">Ketuk untuk memutar 🎧</span>
+                    </div>
+                </div>
+                <button class="music-btn" id="music-toggle-btn">
+                    <span id="music-icon">▶</span>
+                </button>
+                <!-- Audio element (bisa diganti link musik mp3 Anda) -->
+                <audio id="bgm-audio" loop src="https://www.bensound.com/bensound-music/bensound-creativeminds.mp3"></audio>
+            </div>
         </section>
 
         <!-- TAB 2: STATS -->
@@ -117,7 +129,7 @@
 
         <!-- Footer -->
         <footer style="text-align: center; margin-top: 40px; padding-bottom: 20px; color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">
-            <p>Made with Zeltoria</p>
+            <p>Made with 🩵 for Lea Bot</p>
             <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.8;">© 2026 All Rights Reserved</p>
         </footer>
 
@@ -125,4 +137,4 @@
 
     <script src="script.js"></script>
 </body>
-                        </html>
+</html>
