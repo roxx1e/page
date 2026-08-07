@@ -34,14 +34,6 @@ display: flex;
 flex-direction: column;
 }
 
-/* Mobile Friendly: Halaman fixed tidak bisa di-scroll dan menyatu */
-@media(max-width: 768px) {
-    html, body {
-        height: 100vh;
-        overflow: hidden;
-    }
-}
-
 main {
 flex: 1;
 position: relative;
@@ -87,35 +79,33 @@ animation:floatBlob 12s ease-in-out infinite;
 .gradient3{ width:320px; height:320px; background:#ffe5f4; left:40%; top:35%; animation-delay:8s; }
 
 /*======================
-FIXED POSITION CHARACTER
+CHARACTER CONTAINER (SCROLLABLE)
 =======================*/
 .persistent-character-container{
-position: fixed;
-bottom: 0;
-left: 0;
-right: 0;
+position: relative;
 display: flex;
 justify-content: center;
 align-items: flex-end;
 z-index: 1;
 pointer-events: none;
+margin-top: -10px;
 }
 
 #character{
 width: 100%;
 max-width: 1100px;
-height: 98vh;
+height: auto;
+max-height: 85vh;
 object-fit: contain;
 object-position: bottom center;
 pointer-events: auto;
 cursor: pointer;
 user-select: none;
-filter: drop-shadow(0 15px 25px rgba(93,169,255,0.15));
+filter: drop-shadow(0 15px 25px rgba(93,169,255,0.25));
 animation: characterFloat 4s ease-in-out infinite;
 transition: .35s;
-/* Membuat karakter menyatu halus dengan background di bagian bawah */
-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0.4) 88%, rgba(0,0,0,0) 100%);
--webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0.4) 88%, rgba(0,0,0,0) 100%);
+mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0.3) 92%, rgba(0,0,0,0) 100%);
+-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0.3) 92%, rgba(0,0,0,0) 100%);
 }
 
 #character:hover{
@@ -125,11 +115,10 @@ transform: scale(1.02);
 /* Posisi Greeting Bubble didekatkan ke mulut/kepala karakter */
 #characterBubble{
 position: absolute;
-bottom: 64vh;
-left: 55%;
+bottom: 52vh;
+left: 58%;
 transform: translateX(-50%);
-background: rgba(255, 255, 255, 0.95);
-backdrop-filter: blur(8px);
+background: #fff;
 padding: 8px 14px;
 border-radius: 14px;
 font-weight: 800;
@@ -164,9 +153,8 @@ padding:16px 0;
 position:sticky;
 top:0;
 z-index:1000;
-backdrop-filter:blur(12px);
-/* Membuat pembatas di atas (header) transparan dan menyatu dengan background */
-background: rgba(255, 255, 255, 0.15);
+backdrop-filter:blur(18px);
+background: rgba(255, 255, 255, 0.7);
 border-bottom: none;
 }
 
@@ -186,8 +174,7 @@ text-shadow:2px 2px 0 #fff, 4px 4px 0 rgba(0,0,0,.15);
 nav{
 display:flex;
 gap:6px;
-background:rgba(255, 255, 255, 0.75);
-backdrop-filter: blur(8px);
+background:#ffffffcc;
 padding:5px 10px;
 border-radius:999px;
 border:2px solid var(--border);
@@ -217,7 +204,7 @@ color:#fff;
 display:none;
 width:44px;
 height:44px;
-background:rgba(255, 255, 255, 0.85);
+background:#fff;
 border-radius:12px;
 font-size:20px;
 cursor:pointer;
@@ -251,9 +238,9 @@ HERO CONTENT
 display: flex;
 flex-direction: column;
 align-items: center;
-justify-content: flex-end;
-min-height: calc(100vh - 140px);
-padding-bottom: 40px;
+justify-content: flex-start;
+padding-top: 10px;
+padding-bottom: 25px;
 }
 
 .hero-actions{
@@ -267,8 +254,7 @@ background: transparent;
 padding: 0;
 border: none;
 box-shadow: none;
-/* Menaikan sedikit ke atas tombol documentation dan 3 statistik di bawahnya */
-transform: translateY(-25px);
+transform: translateY(-15px);
 }
 
 .pixel-btn.small-btn{
@@ -303,7 +289,7 @@ width: 100%;
 }
 
 .stat{
-background: rgba(255, 255, 255, 0.85);
+background: #ffffffdd;
 backdrop-filter: blur(10px);
 padding: 8px 10px;
 border-radius: 12px;
@@ -370,8 +356,10 @@ text-align: center;
 FOOTER
 =======================*/
 footer{
-padding:12px 0;
-background:transparent;
+padding:16px 0;
+background:#ffffff66;
+backdrop-filter:blur(16px);
+border-top: 2px solid rgba(30, 43, 66, 0.1);
 margin-top: auto;
 position: relative;
 z-index: 3;
@@ -385,7 +373,7 @@ font-weight:800;
 color:var(--muted);
 flex-wrap:wrap;
 gap:10px;
-font-size: 0.8rem;
+font-size: 0.85rem;
 }
 
 /*======================
@@ -415,12 +403,11 @@ right:4%;
 flex-direction:column;
 padding:12px;
 border-radius:16px;
-background: rgba(255, 255, 255, 0.95);
-backdrop-filter: blur(12px);
+background: #fff;
 }
 nav.show{ display:flex; }
 .about{ grid-template-columns:1fr; }
-#character{ height: 85vh; max-width: 105%; }
-#characterBubble { bottom: 68vh; }
-.hero-actions { transform: translateY(-35px); }
+#character{ max-width: 100%; max-height: 70vh; }
+#characterBubble { bottom: 46vh; }
+.hero-actions { transform: translateY(-10px); }
 }
