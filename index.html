@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lenathea</title>
+    <title>Toru Asakura - GFX Design</title>
     <!-- Import Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -15,7 +15,7 @@
         }
 
         body {
-            background-color: #eef2f5;
+            background-color: #d8edf7;
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
@@ -23,19 +23,18 @@
             min-height: 100vh;
         }
 
-        /* Container utama untuk simulasi layar HP */
+        /* Container utama */
         .app-container {
             position: relative;
             width: 100%;
-            max-width: 420px; /* Ukuran maksimal desktop */
+            max-width: 450px; /* Menyesuaikan proporsi gambar */
             height: 100vh;
-            max-height: 850px; /* Batas tinggi desktop */
-            background: linear-gradient(180deg, #bfe4f7 0%, #e6f2f9 40%, #ffffff 100%);
+            max-height: 850px;
+            background: linear-gradient(180deg, #a4d8f0 0%, #cde8f5 100%);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        /* Jika di HP, hilangkan border-radius dan shadow agar full screen */
         @media (max-width: 450px) {
             .app-container {
                 height: 100vh;
@@ -44,98 +43,113 @@
             }
         }
 
+        /* Hashtag Kanan Atas */
         .hashtag {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 12px;
+            top: 30px;
+            right: 25px;
+            font-size: 13px;
             font-weight: 500;
-            color: #333;
+            color: #222;
             z-index: 10;
         }
 
         /* Teks Belakang Besar (ASAKURA) */
         .bg-text {
             position: absolute;
-            top: 10%;
+            top: 45%;
             left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Anton', sans-serif;
-            font-size: 140px;
+            transform: translate(-50%, -50%) scaleY(1.8); /* Ditarik memanjang secara vertikal */
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 170px;
             color: #ffffff;
-            line-height: 0.8;
-            letter-spacing: 5px;
+            letter-spacing: 2px;
             text-align: center;
-            text-shadow: 0 5px 15px rgba(135, 192, 224, 0.5);
+            /* Efek outline dan shadow biru */
+            -webkit-text-stroke: 1px #8bc9e6;
+            text-shadow: 8px 8px 0px rgba(139, 201, 230, 0.6);
             z-index: 1;
+            white-space: nowrap;
         }
 
         /* Teks Sambung (Toru) */
         .cursive-text {
             position: absolute;
-            top: 6%;
-            left: 10%;
-            font-family: 'Dancing Script', cursive;
-            font-size: 60px;
+            top: 8%;
+            left: 8%;
+            font-family: 'Caveat', cursive;
+            font-size: 85px;
             color: #111;
-            transform: rotate(-10deg);
+            transform: rotate(-12deg);
             z-index: 3;
         }
 
         /* Karakter Utama */
         .character-img {
             position: absolute;
-            bottom: 50px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 95%; /* Sesuaikan ukuran gambar */
+            width: 110%; /* Skala lebih besar agar memenuhi area */
             z-index: 2;
-            pointer-events: none; /* Agar klik tembus ke bawah jika perlu */
+            pointer-events: none;
         }
 
         /* Tooltip (Toru) di sebelah kanan */
         .tooltip {
             position: absolute;
-            bottom: 280px;
-            right: 20px;
+            bottom: 12%;
+            right: 15%;
             background: #fff;
-            padding: 5px 15px;
-            border-radius: 10px;
+            padding: 8px 24px;
+            border-radius: 20px;
             border: 2px solid #333;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 16px;
+            color: #222;
             z-index: 10;
             box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
         }
-        .tooltip::after {
+        /* Panah segitiga hitam outline luar */
+        .tooltip::before {
             content: '';
             position: absolute;
-            bottom: -8px;
-            left: 10px;
-            border-width: 8px 8px 0;
+            bottom: -15px;
+            left: 20px;
+            border-width: 15px 12px 0;
             border-style: solid;
             border-color: #333 transparent transparent transparent;
         }
+        /* Panah segitiga putih untuk menutupi bagian tengah agar terlihat seperti border */
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 22px;
+            border-width: 12px 10px 0;
+            border-style: solid;
+            border-color: #fff transparent transparent transparent;
+        }
 
-        /* Area UI Bawah */
+        /* Area UI Kiri Bawah */
         .ui-container {
             position: absolute;
-            bottom: 40px;
-            width: 100%;
-            padding: 0 20px;
+            bottom: 5%;
+            left: 5%;
+            width: 75%;
             z-index: 10;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
 
         /* Komponen UI Glass/White */
         .card {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         /* Search Bar */
@@ -143,163 +157,52 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            width: 70%;
-            border-radius: 8px;
+            padding: 12px 20px;
+            width: 75%;
+            border-radius: 10px;
         }
         .search-bar span {
             font-weight: 500;
-            font-size: 14px;
+            font-size: 15px;
+            color: #111;
         }
         
         /* About Box */
         .about-box {
+            position: relative;
             display: flex;
             align-items: center;
-            padding: 15px;
-            width: 85%;
-            gap: 15px;
-            border-radius: 8px;
+            padding: 18px 20px;
+            width: 100%;
+            border-radius: 10px;
         }
         .about-text {
-            font-size: 9px;
-            color: #555;
-            line-height: 1.4;
-            flex: 1;
-        }
-        .btn-arrow {
-            background: #444;
-            color: #fff;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            border: none;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        /* Row Controls (Slider, Center Btn, Gallery) */
-        .controls-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            margin-top: 5px;
-        }
-
-        /* Saturation Box */
-        .slider-box {
-            flex: 1;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        .slider-track {
-            height: 25px;
-            background: linear-gradient(90deg, #a3d5f0 0%, #e8f4fa 100%);
-            border-radius: 15px;
-            position: relative;
-            margin-bottom: 15px;
-        }
-        .slider-thumb {
-            position: absolute;
-            left: 52%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 15px;
-            height: 15px;
-            background: #fff;
-            border: 4px solid #333;
-            border-radius: 50%;
-            box-shadow: 0 0 5px rgba(0,0,0,0.2);
-        }
-        .slider-labels {
-            display: flex;
-            justify-content: space-between;
             font-size: 10px;
-            font-weight: 600;
             color: #444;
-        }
-
-        /* Center Button (Eye/Lens) */
-        .center-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .lens {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 4px solid #333;
-            background: #a3d5f0;
-            position: relative;
-        }
-        .lens::after {
-            content: '♥';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 10px;
-            color: #333;
-        }
-
-        /* Gallery Box */
-        .gallery-box {
-            display: flex;
-            gap: 5px;
-            padding: 8px;
-            border-radius: 8px;
-        }
-        .gallery-item {
-            width: 35px;
-            height: 35px;
-            background: #ddd;
-            border-radius: 4px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .gallery-item.add {
-            background: transparent;
-            border: 1px solid #666;
-            font-size: 20px;
-            color: #666;
-            font-weight: 300;
-        }
-
-        /* Footer */
-        .footer {
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 7px;
-            color: #666;
-            z-index: 10;
-            line-height: 1.2;
-        }
-        .footer div {
+            line-height: 1.5;
             flex: 1;
+            padding-right: 20px;
         }
-        .footer .right-align {
-            text-align: right;
+
+        /* Tombol panah bulat melayang di pojok kanan bawah boks */
+        .btn-arrow {
+            position: absolute;
+            bottom: -15px;
+            right: -10px;
+            background: #333;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            cursor: pointer;
+            z-index: 11;
         }
+        
     </style>
 </head>
 <body>
@@ -308,72 +211,48 @@
         
         <div class="hashtag">#AnimeGFXDesign</div>
 
+        <!-- Teks belakang besar dengan font padat -->
         <div class="bg-text">
-            Lenathea
+            ASAKURA
         </div>
 
+        <!-- Teks sambung -->
         <div class="cursive-text">Toru</div>
 
-        <!-- KARAKTER UTAMA: Ganti src gambar ini dengan gambar Toru transparan Anda -->
-        <img src="chara.png" alt="Lenathea" class="character-img" style="opacity: 0.3;"> 
-        <!-- Catatan: Hapus style="opacity: 0.3;" jika gambar sudah dimasukkan -->
+        <!-- KARAKTER UTAMA: Ganti src ini dengan gambar chara.png -->
+        <img src="chara.png" alt="Toru Asakura" class="character-img">
 
+        <!-- Tooltip Kanan Bawah -->
         <div class="tooltip">Toru</div>
 
-        <!-- UI KOTAK BAWAH -->
+        <!-- UI KOTAK BAWAH KIRI -->
         <div class="ui-container">
             
+            <!-- Kotak Pencarian -->
             <div class="card search-bar">
                 <span>About me_|</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
             </div>
 
+            <!-- Kotak Deskripsi -->
             <div class="card about-box">
                 <div class="about-text">
                     Toru Asakura is a character from THE IDOLM@STER Shiny Colors and a member of the unit noctchill. She is 17 years old, 160 cm tall, has purple-cyan hair, and a calm, laid-back yet captivating personality. She is voiced by Yuu Wakui.
                 </div>
-                <button class="btn-arrow">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Tombol Navigasi Menimpa Kotak -->
+                <div class="btn-arrow">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
-                </button>
-            </div>
-
-            <div class="controls-row">
-                <div class="card slider-box">
-                    <div class="slider-track">
-                        <div class="slider-thumb"></div>
-                    </div>
-                    <div class="slider-labels">
-                        <span>Saturation</span>
-                        <span>52%</span>
-                    </div>
-                </div>
-
-                <div class="card center-btn">
-                    <div class="lens"></div>
-                </div>
-
-                <div class="card gallery-box">
-                    <!-- Ganti src untuk thumbnail bawah -->
-                    <div class="gallery-item"><img src="https://via.placeholder.com/40" alt="Thumb 1"></div>
-                    <div class="gallery-item"><img src="https://via.placeholder.com/40" alt="Thumb 2"></div>
-                    <div class="gallery-item add">+</div>
                 </div>
             </div>
-        </div>
 
-        <div class="footer">
-            <div>Anime:<br>The Idol Master</div>
-            <div>Name Character:<br>Toru Asakura</div>
-            <div class="right-align" style="margin-right:15px;">Visual<br>Communication Design</div>
-            <div class="right-align">GFX Design By Helipaddd<br>Date: Friday August 29-2025</div>
         </div>
 
     </div>
 
 </body>
-    </html>
+</html>
