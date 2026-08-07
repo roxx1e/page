@@ -5,81 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lea Bot - WhatsApp Assistant</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Menggunakan font Fredoka untuk kesan bubbly dan ceria -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar / Tabs -->
+    <!-- Animasi Bintang Background -->
+    <div class="stars-container" id="stars-container"></div>
+
+    <!-- Efek Ripple saat klik -->
+    <div id="click-ripple" class="ripple"></div>
+
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-brand">LEABOT</div>
         <button class="hamburger" id="hamburger">
             <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
         <ul class="nav-links" id="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#stats">Stats</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" class="tab-link active" data-target="home">Home</a></li>
+            <li><a href="#" class="tab-link" data-target="stats">Stats</a></li>
+            <li><a href="#" class="tab-link" data-target="projects">Projects</a></li>
+            <li><a href="#" class="tab-link" data-target="contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Main Content -->
-    <main class="container" id="home">
+    <!-- Main Content Container -->
+    <main class="container">
         
-        <!-- Chat Bubble -->
-        <div class="chat-bubble-container">
-            <div class="chat-bubble">
-                ✨ Welcome to Lea Bot!
+        <!-- TAB 1: HOME -->
+        <section id="home" class="tab-content active">
+            <div class="chat-bubble-container">
+                <div class="chat-bubble">
+                    ✨ Welcome to Lenathea!
+                </div>
             </div>
-        </div>
 
-        <!-- Hero Character -->
-        <div class="hero-character">
-            <img src="chara.png" alt="Lea Bot Character">
-        </div>
-
-        <!-- Enlarged Intro Card -->
-        <div class="intro-card">
-            <h1>Halo, Aku Lea! 👋</h1>
-            <p>Asisten WhatsApp pintar yang siap membantu mengelola grup, menjawab otomatis, dan memberikan berbagai fitur seru langsung dari chat kamu!</p>
-            <div class="status-indicator">
-                <span class="dot"></span> API Aktif & Berjalan
+            <div class="hero-character">
+                <img src="chara.png" alt="Lea Bot Character">
             </div>
-        </div>
 
-        <!-- Primary Button -->
-        <a href="#" class="btn-primary">Documentation</a>
+            <div class="intro-card">
+                <h1>Halo, Aku Lea! 👋</h1>
+                <p>Asisten WhatsApp pintar yang siap membantu mengelola grup dan menjawab otomatis dari chat kamu!</p>
+                <div class="status-indicator">
+                    <span class="dot"></span> API Aktif
+                </div>
+            </div>
+            
+            <button class="btn-primary" id="btn-docs">Documentation</button>
+        </section>
 
-        <!-- Realtime Stats Section -->
-        <section id="stats" class="stats-section">
-            <div class="stat-card">
-                <h3 class="stat-number" id="user-count">...</h3>
-                <p class="stat-label">Pengguna</p>
+        <!-- TAB 2: STATS -->
+        <section id="stats" class="tab-content">
+            <h2 class="section-title">📊 Realtime Stats</h2>
+            <div class="stats-section">
+                <div class="stat-card">
+                    <h3 class="stat-number" id="user-count">...</h3>
+                    <p class="stat-label">Pengguna</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="stat-number" id="group-count">...</h3>
+                    <p class="stat-label">Grup</p>
+                </div>
+                <div class="stat-card">
+                    <h3 class="stat-number" id="ping-stat">99%</h3>
+                    <p class="stat-label">Uptime</p>
+                </div>
             </div>
-            <div class="stat-card">
-                <h3 class="stat-number" id="group-count">...</h3>
-                <p class="stat-label">Grup</p>
-            </div>
-            <!-- Menambahkan stat tambahan agar pas 3 kolom seperti di gambar -->
-            <div class="stat-card">
-                <h3 class="stat-number" id="ping-stat">99%</h3>
-                <p class="stat-label">Uptime</p>
+            <div class="intro-card" style="margin-top: 2rem;">
+                <p>Statistik ini diambil secara real-time langsung dari server Lea Bot.</p>
             </div>
         </section>
 
-        <!-- Dummy Sections for Tabs -->
-        <section id="projects" class="content-section">
-            <h2>✨ Other Projects</h2>
+        <!-- TAB 3: PROJECTS -->
+        <section id="projects" class="tab-content">
+            <h2 class="section-title">✨ Other Projects</h2>
             <div class="intro-card">
-                <p>Nantikan project keren lainnya dari developer Lea Bot!</p>
+                <h3>Website API</h3>
+                <p>Kumpulan Rest API untuk kebutuhan bot WhatsApp.</p>
+                <button class="btn-primary" style="margin-top: 1rem; padding: 0.8rem;">Lihat Project</button>
+            </div>
+            <div class="intro-card">
+                <h3>Game Bot</h3>
+                <p>Mini-games interaktif di dalam grup WhatsApp.</p>
             </div>
         </section>
 
-        <section id="contact" class="content-section">
-            <h2>📬 Contact Owner</h2>
+        <!-- TAB 4: CONTACT -->
+        <section id="contact" class="tab-content">
+            <h2 class="section-title">📬 Contact Owner</h2>
             <div class="intro-card">
-                <p>Ada bug atau ingin custom bot? Hubungi saya via WhatsApp.</p>
-                <a href="#" class="btn-primary" style="margin-top: 15px; font-size: 1rem; padding: 10px;">Chat Owner</a>
+                <img src="chara.png" alt="Owner" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #1a1a2e; margin-bottom: 1rem; background: #b4aee8;">
+                <p>Ada bug, request fitur, atau ingin custom bot untuk bisnismu? Hubungi saya kapan saja!</p>
+                <button class="btn-primary" style="margin-top: 15px;">Chat via WhatsApp</button>
             </div>
         </section>
 
