@@ -3,281 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cerydra HSR - UI Concept</title>
-    
+    <title>Animera Landing Page</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome for Icons -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #e5e7eb;
+            background-color: #222222; /* Dark wrapper to mimic the mockup presentation */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
         }
-        .font-condensed {
-            font-family: 'Teko', sans-serif;
-            letter-spacing: 1px;
+
+        .app-container {
+            background-color: #f6f7f9;
+            background-image: radial-gradient(circle at 10% 20%, rgba(220, 224, 227, 0.5) 0%, transparent 50%), 
+                              radial-gradient(circle at 90% 80%, rgba(220, 224, 227, 0.5) 0%, transparent 50%);
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
         }
-        /* Custom Scrollbar for hiding if needed */
-        ::-webkit-scrollbar { display: none; }
-        
-        /* Gradient for the top banner */
-        .banner-gradient {
-            background: linear-gradient(135deg, #185a8a 0%, #298fcb 50%, #104169 100%);
+
+        .font-oswald { font-family: 'Oswald', sans-serif; }
+
+        .blue-shape {
+            background-color: #5a7f9b;
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+            border-radius: 1.5rem;
         }
-        .skill-icon-gradient {
-            background: linear-gradient(135deg, #10609a 0%, #2184c0 100%);
+
+        /* Responsive image tweaks */
+        .anime-character {
+            filter: drop-shadow(-5px 5px 10px rgba(0,0,0,0.3));
+        }
+
+        /* Ripple effect for bottom left icon */
+        .ripple-bg {
+            background: radial-gradient(circle, #5a7f9b88 0%, transparent 60%);
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4 md:p-10">
+<body>
 
-    <!-- Main Container -->
-    <div class="relative w-full max-w-[1000px] bg-[#f2f5f9] rounded-[40px] p-6 shadow-2xl overflow-visible">
+    <!-- Main Mockup Container -->
+    <div class="app-container rounded-sm md:rounded-xl">
         
-        <!-- ================= TOP BANNER ================= -->
-        <div class="relative w-full h-[280px] banner-gradient rounded-3xl p-6 text-white shadow-lg overflow-hidden flex justify-between items-start mb-6">
-            <!-- Background abstract shapes (simulated) -->
-            <div class="absolute -top-10 -left-10 w-64 h-64 bg-white opacity-5 rounded-full blur-2xl"></div>
-            <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#00d2ff] opacity-10 rounded-full blur-3xl"></div>
-
-            <!-- Left Info -->
-            <div class="relative z-10 flex flex-col h-full justify-between">
-                <div>
-                    <div class="flex items-center gap-3 mb-2">
-                        <span class="bg-white text-[#185a8a] px-3 py-1 rounded-full text-xs font-semibold">Profile</span>
-                        <div class="flex gap-1 text-sm">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                    </div>
-                    <h1 class="font-condensed text-7xl md:text-8xl leading-none font-semibold mt-2 tracking-wide drop-shadow-md">CERYDRA</h1>
-                    <p class="text-sm font-light tracking-[0.2em] mt-1 text-blue-100 uppercase">Chessmaster Monarch</p>
-                </div>
-                <div class="text-xs font-light text-blue-200/80">
-                    <p>perasaan tadi mau ngedit C4D <span class="ml-4">@R4ADDX</span></p>
-                </div>
+        <!-- Navbar -->
+        <nav class="flex justify-between items-center py-6 px-6 md:px-12 relative z-20">
+            <!-- Search -->
+            <div class="relative hidden sm:block">
+                <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm"></i>
+                <input type="text" class="bg-transparent border border-gray-300 rounded-full py-1.5 pl-10 pr-4 w-48 text-sm focus:outline-none focus:border-gray-500 transition-colors" placeholder="">
+            </div>
+            <div class="sm:hidden block text-gray-700 text-xl cursor-pointer">
+                <i class="fas fa-bars"></i>
             </div>
 
-            <!-- Center Character Image -->
-            <!-- Ganti URL ini dengan gambar karakter transparanmu -->
-            <img src="https://images.unsplash.com/photo-1615592389070-bcc97e05ad01?auto=format&fit=crop&q=80&w=800&ixlib=rb-4.0.3" 
-                 alt="Cerydra" 
-                 class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-auto h-[120%] object-cover object-top z-20 pointer-events-none drop-shadow-2xl mix-blend-luminosity opacity-80">
-            <!-- Note: I used a placeholder and CSS effects to simulate the anime character. Replace the src with your actual transparent PNG and remove mix-blend-luminosity/opacity -->
+            <!-- Links -->
+            <ul class="hidden md:flex gap-10 font-bold text-sm tracking-wide">
+                <li class="cursor-pointer text-black">Home</li>
+                <li class="cursor-pointer text-gray-400 hover:text-black transition">thunder</li>
+                <li class="cursor-pointer text-gray-400 hover:text-black transition">animera</li>
+                <li class="cursor-pointer text-gray-400 hover:text-black transition">souls</li>
+            </ul>
 
-            <!-- Right Info -->
-            <div class="relative z-10 flex flex-col items-end">
-                <i class="fa-solid fa-ellipsis text-xl mb-12 cursor-pointer"></i>
-                <div class="text-right border-t border-white/30 pt-2 mt-8">
-                    <p class="text-xs font-light mb-2">Combat Path</p>
-                    <div class="flex items-center gap-2">
-                        <!-- Placeholder Harmony Icon -->
-                        <div class="w-8 h-8 rounded-full border border-white/50 flex items-center justify-center">
-                            <i class="fa-brands fa-galactic-senate"></i>
-                        </div>
-                        <span class="font-medium text-lg">Harmony</span>
-                    </div>
+            <!-- Right Icons -->
+            <div class="flex items-center gap-6">
+                <div class="relative cursor-pointer">
+                    <i class="fas fa-bell text-gray-800 text-lg"></i>
+                    <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-600 border-2 border-[#f6f7f9] rounded-full"></span>
+                </div>
+                <!-- Mock Logo -->
+                <div class="w-10 h-10 flex items-center justify-center cursor-pointer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/US_Department_of_Veterans_Affairs_seal.svg/1024px-US_Department_of_Veterans_Affairs_seal.svg.png" alt="Logo" class="w-full h-full object-contain filter grayscale opacity-80 mix-blend-multiply">
                 </div>
             </div>
-        </div>
+        </nav>
 
-        <!-- ================= MIDDLE SECTION ================= -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- Hero Section -->
+        <main class="flex flex-col lg:flex-row px-6 md:px-12 pt-4 pb-20 relative z-10">
             
-            <!-- Left Column: Character Info & Gallery -->
-            <div class="md:col-span-4 flex flex-col gap-4">
-                <div class="bg-white rounded-[30px] shadow-sm overflow-hidden flex-grow flex flex-col pb-6">
-                    <!-- Top Tabs -->
-                    <div class="flex bg-[#2596be] text-white text-center font-medium">
-                        <div class="flex-1 py-3 bg-[#1e81a8] rounded-br-[20px] shadow-inner cursor-pointer">Character</div>
-                        <div class="flex-1 py-3 cursor-pointer text-white/70 hover:text-white transition">Info</div>
+            <!-- Left Content -->
+            <div class="lg:w-[55%] flex flex-col justify-center relative mt-8 lg:mt-0">
+                <!-- Headings -->
+                <div class="mb-4">
+                    <h1 class="text-[3.5rem] sm:text-[5.5rem] lg:text-[6.5rem] font-black uppercase leading-[0.85] font-oswald text-[#1a1a1a] tracking-tight">
+                        INFORMATIONS
+                    </h1>
+                    <div class="flex items-baseline gap-3 sm:gap-4 mt-1">
+                        <span class="text-xl sm:text-2xl font-bold text-[#b59b6c] font-oswald tracking-widest">ABOUT</span>
+                        <h1 class="text-[3.8rem] sm:text-[5.5rem] lg:text-[6.5rem] font-black uppercase leading-[0.85] font-oswald text-[#1a1a1a] tracking-tight">
+                            ANIMERA
+                        </h1>
                     </div>
-                    
-                    <div class="p-6 text-center">
-                        <p class="text-xs text-gray-400 italic mb-1">Cerydra is a playable character in</p>
-                        <h2 class="text-2xl font-bold text-gray-700 mb-6">Honkai: Star Rail</h2>
-                        
-                        <!-- Inner Tabs -->
-                        <div class="flex justify-center gap-6 text-sm font-medium mb-6">
-                            <span class="text-gray-300 cursor-pointer">Home</span>
-                            <span class="text-[#0d2a4a] border-b-2 border-[#0d2a4a] pb-1 cursor-pointer">Gallery</span>
-                            <span class="text-gray-300 cursor-pointer">Lore</span>
-                        </div>
+                </div>
 
-                        <!-- Gallery Avatar -->
-                        <div class="relative w-40 h-40 mx-auto">
-                            <div class="w-full h-full rounded-full p-1 border-[3px] border-[#42b5de] overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1615592389070-bcc97e05ad01?auto=format&fit=crop&q=80&w=400" alt="Avatar" class="w-full h-full object-cover rounded-full">
-                            </div>
-                            <!-- Plus Button -->
-                            <div class="absolute bottom-1 right-1 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100 cursor-pointer text-[#42b5de] hover:bg-gray-50 transition">
-                                <i class="fa-solid fa-plus text-xl"></i>
-                            </div>
-                        </div>
+                <!-- Subtitle -->
+                <div class="flex items-center gap-4 mt-6">
+                    <div class="w-12 sm:w-16 h-px bg-gray-400"></div>
+                    <span class="text-[#7d90a1] font-bold tracking-[0.2em] text-xs sm:text-sm uppercase">WHAT DO YOU THINK?</span>
+                </div>
+
+                <!-- Paragraph -->
+                <p class="mt-5 text-gray-600 max-w-sm text-sm sm:text-base font-medium leading-relaxed">
+                    Zero Two is one of the main characters in the anime
+                </p>
+
+                <!-- Button -->
+                <button class="mt-8 bg-[#5a7f9b] text-white px-8 py-2.5 rounded-lg font-semibold tracking-wider text-sm w-max shadow-lg hover:bg-[#43627a] transition duration-300">
+                    CONTACT UP
+                </button>
+
+                <!-- Bottom Left Badge (Desktop only for positioning, inline on mobile) -->
+                <div class="mt-16 lg:mt-0 lg:absolute lg:-bottom-6 lg:left-0 flex items-center gap-5">
+                    <div class="relative flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-md border-[5px] border-[#e2e7ec]">
+                        <div class="absolute inset-0 rounded-full ripple-bg scale-150 -z-10"></div>
+                        <span class="text-2xl font-black text-[#5a7f9b] font-oswald">4</span>
+                    </div>
+                    <div class="font-bold text-xs sm:text-sm leading-tight text-gray-900 font-oswald tracking-widest flex flex-col">
+                        <span>THE SOULS</span>
+                        <span class="text-lg sm:text-xl">ANIMERA</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Center Column: Skills & Stats -->
-            <div class="md:col-span-6 flex flex-col gap-6">
-                <!-- Skill Icons Row -->
-                <div class="flex justify-between items-start px-2 gap-4">
-                    <div class="flex flex-col items-center gap-2 w-1/3">
-                        <div class="w-full aspect-square skill-icon-gradient rounded-2xl flex items-center justify-center shadow-md cursor-pointer hover:scale-105 transition">
-                            <i class="fa-solid fa-chess-rook text-4xl text-white drop-shadow-md"></i>
-                        </div>
-                        <p class="text-[11px] font-medium text-gray-600 text-center leading-tight">King's Castling</p>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-1/3">
-                        <div class="w-full aspect-square skill-icon-gradient rounded-2xl flex items-center justify-center shadow-md cursor-pointer hover:scale-105 transition">
-                            <i class="fa-solid fa-chess-pawn text-4xl text-white drop-shadow-md"></i>
-                        </div>
-                        <p class="text-[11px] font-medium text-gray-600 text-center leading-tight">Pawn's Promotion</p>
-                    </div>
-                    <div class="flex flex-col items-center gap-2 w-1/3">
-                        <div class="w-full aspect-square skill-icon-gradient rounded-2xl flex items-center justify-center shadow-md cursor-pointer hover:scale-105 transition">
-                            <i class="fa-solid fa-certificate text-4xl text-white drop-shadow-md"></i>
-                        </div>
-                        <p class="text-[11px] font-medium text-gray-600 text-center leading-tight">Scholar's Mate</p>
-                    </div>
-                </div>
-
-                <!-- Statistic Chart -->
-                <div class="bg-white rounded-3xl p-6 shadow-sm flex-grow relative overflow-hidden">
-                    <h3 class="text-[#2596be] font-semibold text-sm mb-4">Statistic</h3>
-                    <!-- Pure SVG Chart to match image exactly -->
-                    <div class="w-full h-32 relative">
-                        <svg viewBox="0 0 100 50" class="w-full h-full overflow-visible" preserveAspectRatio="none">
-                            <!-- Background Grid Lines -->
-                            <line x1="10" y1="0" x2="10" y2="40" stroke="#f0f0f0" stroke-width="0.5" />
-                            <line x1="30" y1="0" x2="30" y2="40" stroke="#f0f0f0" stroke-width="0.5" />
-                            <line x1="50" y1="0" x2="50" y2="40" stroke="#f0f0f0" stroke-width="0.5" />
-                            <line x1="70" y1="0" x2="70" y2="40" stroke="#f0f0f0" stroke-width="0.5" />
-                            <line x1="90" y1="0" x2="90" y2="40" stroke="#f0f0f0" stroke-width="0.5" />
-                            
-                            <!-- Area Fill -->
-                            <path d="M 10 30 C 20 20, 25 35, 30 35 C 40 35, 45 10, 50 15 C 60 25, 65 30, 70 20 C 80 0, 85 10, 90 5 L 90 40 L 10 40 Z" fill="#dcf1fb" opacity="0.6"/>
-                            
-                            <!-- Line -->
-                            <path d="M 10 30 C 20 20, 25 35, 30 35 C 40 35, 45 10, 50 15 C 60 25, 65 30, 70 20 C 80 0, 85 10, 90 5" fill="none" stroke="#3db6df" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            
-                            <!-- Points -->
-                            <circle cx="10" cy="30" r="1.5" fill="white" stroke="#3db6df" stroke-width="1"/>
-                            <circle cx="30" cy="35" r="1.5" fill="white" stroke="#3db6df" stroke-width="1"/>
-                            <circle cx="50" cy="15" r="1.5" fill="white" stroke="#3db6df" stroke-width="1"/>
-                            <circle cx="70" cy="20" r="1.5" fill="white" stroke="#3db6df" stroke-width="1"/>
-                            <circle cx="90" cy="5" r="1.5" fill="white" stroke="#3db6df" stroke-width="1"/>
-                        </svg>
-                        
-                        <!-- X Axis Labels -->
-                        <div class="flex justify-between px-1 text-[10px] text-[#3db6df] font-medium mt-2 absolute bottom-[-15px] w-full">
-                            <span>01</span>
-                            <span>02</span>
-                            <span>03</span>
-                            <span>04</span>
-                            <span>05</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column: Toggles & Actions -->
-            <div class="md:col-span-2 flex flex-col gap-6 items-center">
+            <!-- Right Content (Image & Features) -->
+            <div class="lg:w-[45%] flex flex-col items-center lg:items-end relative mt-16 lg:mt-0">
                 
-                <!-- Quick Settings Widget -->
-                <div class="bg-gradient-to-b from-[#185a8a] to-[#0c3154] w-full rounded-[24px] p-3 shadow-md">
-                    <div class="grid grid-cols-2 gap-2 h-[120px]">
-                        <!-- Airplane -->
-                        <div class="bg-white/10 rounded-xl flex items-center justify-center cursor-pointer hover:bg-white/20 transition text-white/50">
-                            <i class="fa-solid fa-plane"></i>
+                <!-- Anime Image Container -->
+                <div class="relative w-[90%] sm:w-[350px] lg:w-[400px] h-[350px] sm:h-[450px]">
+                    <!-- Background Shape -->
+                    <div class="absolute inset-0 blue-shape z-0"></div>
+                    
+                    <!-- Anime Character (Using a high-quality transparent PNG placeholder to match vibe) -->
+                    <!-- In production, replace src with your exact image asset -->
+                    <img src="https://i.ibb.co/3s2t1tD/anime-girl-transparent.png" 
+                         alt="Anime Character" 
+                         class="anime-character absolute bottom-0 left-1/2 transform -translate-x-1/2 h-[115%] w-auto object-cover object-bottom z-10 pointer-events-none"
+                         onerror="this.src='https://www.pngplay.com/wp-content/uploads/12/Anime-Girl-Transparent-Free-PNG.png'"> 
+                         <!-- Fallback URL if first link breaks -->
+                </div>
+
+                <!-- Features Footer -->
+                <div class="flex justify-between items-start mt-10 lg:mt-8 w-full max-w-[420px]">
+                    
+                    <!-- Feature 1 -->
+                    <div class="flex-1 text-center flex flex-col items-center px-2">
+                        <div class="w-8 h-8 rounded-md bg-[#d8b87d] text-white flex items-center justify-center mb-3 shadow-md">
+                            <i class="fas fa-shopping-bag text-xs"></i>
                         </div>
-                        <!-- Bluetooth (Active) -->
-                        <div class="bg-white rounded-xl flex items-center justify-center cursor-pointer shadow-inner text-[#185a8a]">
-                            <i class="fa-brands fa-bluetooth-b text-xl"></i>
+                        <p class="text-[9px] sm:text-[10px] text-gray-500 font-bold uppercase leading-relaxed tracking-wider">
+                            NEW NEWS ABOUT ALL<br>THE NEW ANIME
+                        </p>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="w-px h-12 bg-gray-300 mt-2 hidden sm:block"></div>
+
+                    <!-- Feature 2 -->
+                    <div class="flex-1 text-center flex flex-col items-center px-2">
+                        <div class="w-8 h-8 rounded-md bg-[#d8b87d] text-white flex items-center justify-center mb-3 shadow-md">
+                            <i class="fas fa-truck text-xs"></i>
                         </div>
-                        <!-- Moon -->
-                        <div class="bg-white/10 rounded-xl flex items-center justify-center cursor-pointer hover:bg-white/20 transition text-white/50">
-                            <i class="fa-solid fa-moon"></i>
+                        <p class="text-[9px] sm:text-[10px] text-gray-500 font-bold uppercase leading-relaxed tracking-wider">
+                            NEW CONTESTS AND<br>EVENTS FOR MEMBERS
+                        </p>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="w-px h-12 bg-gray-300 mt-2 hidden sm:block"></div>
+
+                    <!-- Feature 3 -->
+                    <div class="flex-1 text-center flex flex-col items-center px-2">
+                        <div class="w-8 h-8 rounded-md bg-[#d8b87d] text-white flex items-center justify-center mb-3 shadow-md">
+                            <i class="fas fa-globe text-xs"></i>
                         </div>
-                        <!-- Location -->
-                        <div class="bg-white/10 rounded-xl flex items-center justify-center cursor-pointer hover:bg-white/20 transition text-white/50">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
+                        <p class="text-[9px] sm:text-[10px] text-gray-500 font-bold uppercase leading-relaxed tracking-wider">
+                            INFORMATION ABOUT<br>OLD AND NEW ANIME
+                        </p>
                     </div>
-                </div>
 
-                <!-- Action Buttons Column -->
-                <div class="bg-[#e4ebf1] w-full rounded-[40px] py-4 px-3 flex flex-col gap-3 items-center shadow-inner">
-                    <div class="w-[50px] h-[50px] bg-[#1a3a60] rounded-xl flex items-center justify-center cursor-pointer hover:bg-[#254f7a] transition shadow-md">
-                        <i class="fa-solid fa-bolt text-white text-xl"></i>
-                    </div>
-                    <div class="w-[50px] h-[50px] bg-[#1a3a60] rounded-xl flex items-center justify-center cursor-pointer hover:bg-[#254f7a] transition shadow-md">
-                        <i class="fa-solid fa-bomb text-white text-xl"></i>
-                    </div>
-                    <div class="w-[50px] h-[50px] bg-[#1a3a60] rounded-xl flex items-center justify-center cursor-pointer hover:bg-[#254f7a] transition shadow-md">
-                        <i class="fa-solid fa-gamepad text-white text-xl"></i>
-                    </div>
-                    <div class="w-[50px] h-[50px] bg-[#1a3a60] rounded-xl flex items-center justify-center cursor-pointer hover:bg-[#254f7a] transition shadow-md">
-                        <i class="fa-solid fa-puzzle-piece text-white text-xl"></i>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ================= BOTTOM SECTION ================= -->
-        <div class="relative mt-8 bg-[#1374a5] rounded-3xl p-4 md:p-5 flex flex-col md:flex-row gap-4 items-stretch shadow-lg">
-            
-            <!-- Floating Top Label -->
-            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white px-6 py-1.5 rounded-full shadow-sm">
-                <span class="text-sm font-semibold text-[#0d2a4a]">Talent & Technique</span>
-            </div>
-
-            <!-- Card 1 -->
-            <div class="flex-1 bg-[#479cbd] bg-opacity-40 border border-[#6abde0] rounded-2xl p-4 flex flex-col justify-between mt-3 md:mt-0">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-chess-knight text-2xl text-white opacity-80"></i>
-                    <div>
-                        <h4 class="text-white font-medium text-sm">Ave Imperator</h4>
-                        <div class="w-8 h-[2px] bg-white/50 mt-1"></div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-lg px-4 py-2 mt-4 inline-block self-start shadow-sm">
-                    <span class="font-bold text-[#1374a5] text-xl">30%-66%</span>
                 </div>
             </div>
+        </main>
+    </div>
 
-            <!-- Card 2 -->
-            <div class="flex-1 bg-[#479cbd] bg-opacity-40 border border-[#6abde0] rounded-2xl p-4 flex flex-col justify-between mt-3 md:mt-0">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-chess-board text-2xl text-white opacity-80"></i>
-                    <div>
-                        <h4 class="text-white font-medium text-sm leading-tight">First-Move<br>Advantage</h4>
-                        <div class="w-8 h-[2px] bg-white/50 mt-1"></div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-lg px-4 py-2 mt-4 inline-block self-start shadow-sm">
-                    <span class="font-bold text-[#1374a5] text-xl">599+</span>
-                </div>
-            </div>
-
-            <!-- Add Button Side -->
-            <div class="w-16 bg-white rounded-2xl flex items-center justify-center cursor-pointer shadow-sm hover:bg-gray-50 transition min-h-[100px] mt-3 md:mt-0">
-                <i class="fa-solid fa-plus text-3xl text-[#3db6df]"></i>
-            </div>
-            
-        </div>
-
+    <!-- Presentation Slider Dots (Mockup element at bottom) -->
+    <div class="flex gap-2 mt-6">
+        <div class="w-2.5 h-2.5 rounded-full bg-gray-500"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-gray-500"></div>
     </div>
 
 </body>
-                                </html>
+    </html>
