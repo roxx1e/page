@@ -1,13 +1,12 @@
 :root {
-    /* Warna diubah menyesuaikan tema terang/pastel dari gambar */
-    --bg-gradient-top: #e0f2fe;    /* Biru pastel muda */
-    --bg-gradient-bottom: #fce7f3; /* Pink pastel muda */
-    --card-bg: #ffffff;            /* Background card putih */
-    --text-light: #333333;         /* Teks utama menjadi gelap agar terbaca */
-    --text-muted: #666666;         /* Teks sekunder abu-abu gelap */
-    --primary-color: #2a6c8e;      /* Biru utama (untuk tombol & judul) */
-    --accent-color: #2a6c8e;       /* Disamakan dengan primary untuk konsistensi */
-    --border-color: #2a6c8e;       /* Warna border & shadow (biru neo-brutalism) */
+    --bg-gradient-top: #e0f2fe;
+    --bg-gradient-bottom: #fce7f3;
+    --card-bg: #ffffff;
+    --text-light: #333333;
+    --text-muted: #666666;
+    --primary-color: #2a6c8e;
+    --accent-color: #2a6c8e;
+    --border-color: #2a6c8e;
 }
 
 * {
@@ -27,7 +26,7 @@ body {
     min-height: 100vh;
 }
 
-/* Background Clouds Animation (Menggantikan Stars) */
+/* Background Clouds Animation */
 .clouds-container {
     position: fixed;
     top: 0;
@@ -39,25 +38,24 @@ body {
 }
 .cloud {
     position: absolute;
-    background: rgba(255, 255, 255, 0.5); /* Awan putih semi-transparan */
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 50px;
     animation: floatClouds linear infinite;
 }
 .cloud::before, .cloud::after {
     content: '';
     position: absolute;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
 }
-/* Awan 1 */
 .cloud-1 { width: 120px; height: 40px; top: 15%; left: -150px; animation-duration: 35s; }
 .cloud-1::before { width: 50px; height: 50px; top: -25px; left: 15px; }
 .cloud-1::after { width: 70px; height: 70px; top: -35px; left: 45px; }
-/* Awan 2 */
+
 .cloud-2 { width: 180px; height: 60px; top: 40%; left: -200px; animation-duration: 45s; animation-delay: 5s; }
 .cloud-2::before { width: 70px; height: 70px; top: -35px; left: 25px; }
 .cloud-2::after { width: 100px; height: 100px; top: -50px; left: 65px; }
-/* Awan 3 */
+
 .cloud-3 { width: 100px; height: 30px; top: 75%; left: -120px; animation-duration: 25s; animation-delay: 15s; }
 .cloud-3::before { width: 40px; height: 40px; top: -20px; left: 15px; }
 .cloud-3::after { width: 50px; height: 50px; top: -25px; left: 40px; }
@@ -81,7 +79,7 @@ body {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary-color);
-    text-shadow: 2px 2px 0px rgba(42, 108, 142, 0.2); /* Shadow disesuaikan agar rapi di tema terang */
+    text-shadow: 2px 2px 0px rgba(42, 108, 142, 0.2);
     letter-spacing: 1px;
 }
 
@@ -93,7 +91,7 @@ body {
     padding: 5px 10px;
     cursor: pointer;
     box-shadow: 3px 3px 0px var(--border-color);
-    color: var(--card-bg);
+    color: #ffffff;
     transition: transform 0.1s;
 }
 .hamburger:active { transform: scale(0.9); box-shadow: 1px 1px 0px var(--border-color); }
@@ -116,12 +114,12 @@ body {
 
 .nav-links a.active {
     background: var(--primary-color);
-    color: #ffffff; /* Diubah ke putih agar kontras dengan biru */
+    color: #ffffff;
     border: 2px solid var(--border-color);
     box-shadow: 2px 2px 0px var(--border-color);
 }
 
-/* Main Container (Tab System) */
+/* Main Container */
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -153,9 +151,9 @@ body {
     text-shadow: 2px 2px 0px rgba(42, 108, 142, 0.2);
 }
 
-/* Chat Bubble dengan Transisi Ukuran Otomatis */
+/* Chat Bubble Container dengan jarak lebih lega */
 .chat-bubble-container {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -172,8 +170,6 @@ body {
     max-width: 90%;
     text-align: center;
     line-height: 1.5;
-    
-    /* Animasi Floating & Transisi untuk Resize */
     animation: floatBubble 4s ease-in-out infinite;
     transition: all 0.3s ease; 
 }
@@ -197,7 +193,6 @@ body {
     z-index: 1;
 }
 
-/* Kursor Mengetik */
 .typing-cursor {
     font-weight: bold;
     color: var(--primary-color);
@@ -208,7 +203,7 @@ body {
     50% { opacity: 0; }
 }
 
-/* Character Floating Animation */
+/* Character dengan Drop Shadow */
 .hero-character img {
     max-width: 100%;
     height: auto;
@@ -218,6 +213,7 @@ body {
     position: relative;
     z-index: 2;
     animation: floatCharacter 3s ease-in-out infinite;
+    filter: drop-shadow(4px 4px 0px rgba(42, 108, 142, 0.25));
 }
 
 @keyframes floatCharacter {
@@ -250,7 +246,7 @@ body {
 
 .intro-card p {
     font-size: 1.1rem;
-    color: var(--text-light); /* Diubah agar lebih tegas di atas background putih */
+    color: var(--text-light);
     margin-bottom: 1rem;
 }
 
@@ -260,7 +256,7 @@ body {
     align-items: center;
     font-weight: 600;
     font-size: 0.9rem;
-    color: #2a6c8e; /* Diubah menyesuaikan tema */
+    color: #2a6c8e;
     background: rgba(42, 108, 142, 0.1);
     padding: 6px 14px;
     border-radius: 20px;
@@ -276,19 +272,19 @@ body {
 }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-/* Button with Click Effect (Disesuaikan dengan gambar) */
+/* Button Primary */
 .btn-primary {
     display: block;
     width: 100%;
     background: var(--primary-color);
-    color: #ffffff; /* Diubah ke putih */
+    color: #ffffff;
     text-align: center;
     padding: 1rem;
     font-size: 1.2rem;
     font-weight: 700;
-    border: 3px solid #000000; /* Border hitam sesuai gambar */
+    border: 3px solid #000000;
     border-radius: 12px;
-    box-shadow: 4px 4px 0px #000000; /* Shadow hitam sesuai gambar */
+    box-shadow: 4px 4px 0px #000000;
     margin-bottom: 2rem;
     cursor: pointer;
     transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
@@ -307,7 +303,7 @@ body {
     width: 100%;
 }
 .stat-card {
-    background: var(--card-bg); /* Diubah ke putih agar serasi */
+    background: var(--card-bg);
     border: 3px solid var(--border-color);
     border-radius: 12px;
     padding: 1rem 0.5rem;
@@ -327,11 +323,11 @@ body {
     color: var(--text-muted);
 }
 
-/* Ripple Click Effect */
+/* Ripple */
 .ripple {
     position: fixed;
     border-radius: 50%;
-    background: rgba(42, 108, 142, 0.4); /* Disesuaikan dengan warna biru tema */
+    background: rgba(42, 108, 142, 0.4);
     transform: scale(0);
     pointer-events: none;
     z-index: 9999;
@@ -364,4 +360,4 @@ body {
     .nav-links.active { display: flex; }
     .stats-section { grid-template-columns: 1fr; }
     .hero-character img { max-height: 300px; }
-}
+    }
