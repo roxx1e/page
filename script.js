@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3000'; 
+const API_BASE_URL = 'http://139.59.231.17:8080'; 
 
 // 1. Logika Pengambilan Data API
 async function fetchBotStats() {
@@ -7,7 +7,7 @@ async function fetchBotStats() {
         if (!response.ok) throw new Error(`HTTP error!`);
         const data = await response.json();
         
-        // Memperbarui UI dari data api.js[cite: 2]
+        // Memperbarui UI dari data api
         document.getElementById('user-count').textContent = data.users.toLocaleString('id-ID') + '+';
         document.getElementById('group-count').textContent = data.groups.toLocaleString('id-ID') + '+';
     } catch (error) {
@@ -49,12 +49,14 @@ function initTabs() {
     });
 }
 
-// 3. Efek Bintang (Kawaii Background)
+// 3. Efek Bintang (Sudah dihapus sepenuhnya agar tidak menyebabkan error)
 
 // 4. Efek Sentuhan/Klik (Ripple)
 function initClickEffect() {
     document.addEventListener('click', function(e) {
         const ripple = document.getElementById('click-ripple');
+        if (!ripple) return; // Mencegah error jika elemen ripple tidak ada di HTML
+        
         ripple.classList.remove('animate');
         
         const size = 50;
@@ -71,6 +73,8 @@ function initClickEffect() {
 // 5. Animasi Mengetik (Typewriter) pada Chat Bubble dengan Auto-Resizing
 function initTypingEffect() {
     const textElement = document.getElementById('chat-bubble-text');
+    if (!textElement) return; // Mencegah error jika elemen teks tidak ada di HTML
+
     const messages = [
         "✨ Selamat datang di web Lea!",
         "Halo, Aku Lea! 👋 Asisten WhatsApp pintar yang siap membantu mengelola grup dan membalas pesanmu secara otomatis!"
@@ -98,7 +102,8 @@ function initTypingEffect() {
                 typeSpeed = 2000;
                 isDeleting = true;
             } else {
-                document.querySelector('.typing-cursor').style.animation = 'blinkCursor 1s infinite';
+                const cursor = document.querySelector('.typing-cursor');
+                if(cursor) cursor.style.animation = 'blinkCursor 1s infinite';
                 return; 
             }
         } else if (isDeleting && charIndex === 0) {
@@ -119,11 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(fetchBotStats, 30000); 
     
     initTabs();
-    createStars();
     initClickEffect();
     initTypingEffect();
 
-    document.getElementById('hamburger').addEventListener('click', () => {
-        document.getElementById('nav-links').classList.toggle('active');
-    });
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    }
 });
