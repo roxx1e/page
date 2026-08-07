@@ -49,37 +49,53 @@ function initTypingEffect() {
     const messages = [
         "✨ Selamat datang kak",
         "Halo, Perkenalkan Nama Aku Lea",
-        "Ada Adalah Whatsapp Bot Pintar Yang Bisa Membantu",
-        "Kalau Mau Coba Fitur Atau Beriteraksi Denganku Klick Tombol Di Bawah Ya <3"
+        "Aku Adalah WhatsApp Bot Pintar Yang Bisa Membantu",
+        "Kalau Mau Coba Fitur Atau Berinteraksi Denganku Klik Tombol Di Bawah Ya <3"
     ];
-    
+
     let messageIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
 
     function type() {
         const currentMessage = messages[messageIndex];
-        
+
+        // Sedang menghapus
         if (isDeleting) {
-            textElement.textContent = currentMessage.substring(0, charIndex - 1);
             charIndex--;
-        } else {
-            textElement.textContent = currentMessage.substring(0, charIndex + 1);
+            textElement.textContent = currentMessage.substring(0, charIndex);
+        } 
+        
+        // Sedang mengetik
+        else {
             charIndex++;
+            textElement.textContent = currentMessage.substring(0, charIndex);
         }
 
+        // Kecepatan mengetik / menghapus
         let typeSpeed = isDeleting ? 30 : 60;
 
+        // Jika selesai mengetik
         if (!isDeleting && charIndex === currentMessage.length) {
-            if (messageIndex === 0) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else {
+
+            // Kalau sudah pesan terakhir, berhenti di sini
+            if (messageIndex === messages.length - 1) {
                 const cursor = document.querySelector('.typing-cursor');
-                if(cursor) cursor.style.animation = 'blinkCursor 1s infinite';
-                return; 
+
+                if (cursor) {
+                    cursor.style.animation = 'blinkCursor 1s infinite';
+                }
+
+                return;
             }
-        } else if (isDeleting && charIndex === 0) {
+
+            // Tunggu sebelum mulai menghapus
+            typeSpeed = 1800;
+            isDeleting = true;
+        }
+
+        // Jika selesai menghapus
+        else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             messageIndex++;
             typeSpeed = 500;
@@ -88,8 +104,9 @@ function initTypingEffect() {
         setTimeout(type, typeSpeed);
     }
 
+    // Mulai animasi setelah 1 detik
     setTimeout(type, 1000);
-}
+    }
 
 // 4. Interaksi Karakter Menjadi Lebih Hidup & Dinamis
 function initCharacterInteraction() {
