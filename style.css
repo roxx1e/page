@@ -79,7 +79,7 @@ animation:floatBlob 12s ease-in-out infinite;
 .gradient3{ width:320px; height:320px; background:#ffe5f4; left:40%; top:35%; animation-delay:8s; }
 
 /*======================
-FIXED & FLOATING CHARACTER (Menyatu & Melayang)
+FIXED POSITION CHARACTER (Diperbesar 15% & Fixed Posisi tidak berubah saat scroll)
 =======================*/
 .persistent-character-container{
 position: fixed;
@@ -95,8 +95,8 @@ pointer-events: none;
 
 #character{
 width: 100%;
-max-width: 820px;
-height: 78vh;
+max-width: 943px;
+height: 90vh;
 object-fit: contain;
 object-position: bottom center;
 pointer-events: auto;
@@ -115,7 +115,7 @@ transform: scale(1.02);
 
 #characterBubble{
 position: absolute;
-bottom: 60vh;
+bottom: 65vh;
 background: #fff;
 padding: 10px 16px;
 border-radius: 14px;
@@ -229,7 +229,7 @@ transform: translateY(0);
 }
 
 /*======================
-HERO CONTENT (Tombol & Stats di Bawah)
+HERO CONTENT (Card pembungkus tombol dihapus)
 =======================*/
 .hero-content{
 display: flex;
@@ -247,12 +247,10 @@ align-items: center;
 gap: 12px;
 width: 100%;
 max-width: 420px;
-background: rgba(255, 255, 255, 0.75);
-backdrop-filter: blur(12px);
-padding: 16px;
-border-radius: 20px;
-border: 2px solid var(--border);
-box-shadow: var(--shadow);
+background: transparent;
+padding: 0;
+border: none;
+box-shadow: none;
 }
 
 .pixel-btn.small-btn{
@@ -351,13 +349,13 @@ text-align: center;
 }
 
 /*======================
-FOOTER
+FOOTER (Batasan di bawah untuk footer tetap ada)
 =======================*/
 footer{
 padding:16px 0;
 background:#ffffff66;
 backdrop-filter:blur(16px);
-border-top: none;
+border-top: 2px solid rgba(30, 43, 66, 0.1);
 margin-top: auto;
 position: relative;
 z-index: 3;
@@ -405,5 +403,5 @@ background: #fff;
 }
 nav.show{ display:flex; }
 .about{ grid-template-columns:1fr; }
-#character{ height: 65vh; max-width: 100%; }
+#character{ height: 75vh; max-width: 100%; }
            }
