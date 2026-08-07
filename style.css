@@ -133,22 +133,29 @@ body {
     text-shadow: 2px 2px 0px var(--border-color);
 }
 
-/* Chat Bubble */
+/* Chat Bubble dengan Transisi Ukuran Otomatis */
 .chat-bubble-container {
     margin-bottom: 2rem;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 .chat-bubble {
     background: var(--card-bg);
     border: 3px solid var(--border-color);
     padding: 0.8rem 1.5rem;
-    border-radius: 99px;
+    border-radius: 30px;
     font-weight: 600;
     color: var(--accent-color);
     box-shadow: 4px 4px 0px var(--border-color);
     position: relative;
+    max-width: 90%;
+    text-align: center;
+    line-height: 1.5;
+    
+    /* Animasi Floating & Transisi untuk Resize */
     animation: floatBubble 4s ease-in-out infinite;
+    transition: all 0.3s ease; 
 }
 .chat-bubble::after {
     content: '';
@@ -168,6 +175,17 @@ body {
     border-right: 8px solid transparent;
     border-top: 8px solid var(--card-bg);
     z-index: 1;
+}
+
+/* Kursor Mengetik */
+.typing-cursor {
+    font-weight: bold;
+    color: var(--primary-color);
+    animation: blinkCursor 0.8s infinite;
+}
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 /* Character Floating Animation */
