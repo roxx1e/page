@@ -34,6 +34,14 @@ display: flex;
 flex-direction: column;
 }
 
+/* Mobile Friendly: Halaman fixed tidak bisa di-scroll di perangkat mobile */
+@media(max-width: 768px) {
+    html, body {
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
 main {
 flex: 1;
 position: relative;
@@ -79,7 +87,7 @@ animation:floatBlob 12s ease-in-out infinite;
 .gradient3{ width:320px; height:320px; background:#ffe5f4; left:40%; top:35%; animation-delay:8s; }
 
 /*======================
-FIXED POSITION CHARACTER (Diperbesar 15% & Fixed Posisi tidak berubah saat scroll)
+FIXED POSITION CHARACTER
 =======================*/
 .persistent-character-container{
 position: fixed;
@@ -113,29 +121,33 @@ mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0.2) 92%, r
 transform: scale(1.02);
 }
 
+/* Posisi Greeting Bubble didekatkan ke mulut/kepala karakter */
 #characterBubble{
 position: absolute;
-bottom: 65vh;
+bottom: 58vh;
+left: 55%;
+transform: translateX(-50%);
 background: #fff;
-padding: 10px 16px;
+padding: 8px 14px;
 border-radius: 14px;
 font-weight: 800;
 border: 2px solid var(--border);
 box-shadow: var(--shadow);
 transition: opacity 0.3s ease, transform 0.3s ease;
-font-size: 0.85rem;
+font-size: 0.8rem;
 pointer-events: none;
 z-index: 10;
 opacity: 1;
+white-space: nowrap;
 }
 
 #characterBubble::after{
 content: "";
 position: absolute;
 bottom: -7px;
-left: 20px;
-width: 12px;
-height: 12px;
+left: 30px;
+width: 10px;
+height: 10px;
 background: #fff;
 border-right: 2px solid var(--border);
 border-bottom: 2px solid var(--border);
@@ -143,7 +155,7 @@ transform: rotate(45deg);
 }
 
 /*======================
-HEADER & TAB BAR (Tanpa pembatas atas)
+HEADER & TAB BAR
 =======================*/
 header{
 padding:16px 0;
@@ -229,7 +241,7 @@ transform: translateY(0);
 }
 
 /*======================
-HERO CONTENT (Card pembungkus tombol dihapus)
+HERO CONTENT
 =======================*/
 .hero-content{
 display: flex;
@@ -275,7 +287,7 @@ box-shadow: 1px 1px 0 var(--border);
 }
 
 /*======================
-STATS (Di bawah tombol)
+STATS
 =======================*/
 .stats.small-stats{
 display: flex;
@@ -349,7 +361,7 @@ text-align: center;
 }
 
 /*======================
-FOOTER (Batasan di bawah untuk footer tetap ada)
+FOOTER
 =======================*/
 footer{
 padding:16px 0;
@@ -404,4 +416,5 @@ background: #fff;
 nav.show{ display:flex; }
 .about{ grid-template-columns:1fr; }
 #character{ height: 75vh; max-width: 100%; }
+#characterBubble { bottom: 62vh; }
            }
