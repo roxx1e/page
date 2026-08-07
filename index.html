@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lenathea</title>
+    <link rel="icon" type="image/png" href="chara.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -46,10 +47,10 @@
             <!-- Hero Character Interaktif -->
             <div class="hero-character animate-float-scale" id="character-container">
                 <img src="chara.png" alt="Lea Bot Character" id="chara-img">
-                <div class="heart-effect" id="heart-effect"> <3</div>
+                <div class="heart-effect" id="heart-effect">💕</div>
             </div>
             
-            <button class="btn-primary" id="btn-docs">Chat Lea Now</button>
+            <a href="https://wa.me/6289679235691?text=.menu" target="_blank" class="btn-primary" id="btn-docs">Coba Sekarang</button>
         </section>
 
         <!-- TAB 2: PROJECTS -->
@@ -57,12 +58,13 @@
             <h2 class="section-title">✨ Other Projects</h2>
             <div class="intro-card">
                 <h3>Website API</h3>
-                <p>Kumpulan Rest API untuk kebutuhan bot WhatsApp.</p>
-                <button class="btn-primary" style="margin-top: 1rem; padding: 0.8rem;">Lihat Project</button>
+                <p>Platform Rest API yang menyediakan puluhan endpoint untuk membantu mengembangkan fitur bot WhatsAppmu</p>
+                <a href="https://api.leaa.site" target="_blank" class="btn-primary" style="margin-top: 1rem; padding: 0.8rem;">Lihat Project</button>
             </div>
             <div class="intro-card">
-                <h3>Game Bot</h3>
-                <p>Mini-games interaktif di dalam grup WhatsApp.</p>
+                <h3>Website Page</h3>
+                <p>Jika tertarik dengan source page ini silahkan di pakai dengan cara klick tombol di bawah, tapi jangan di claim punya sendiri ya <3</p>
+                <a href="https://github.com/roxx1e/page" target="_blank" class="btn-primary" style="margin-top: 1rem; padding: 0.8rem;">Coba Project</button>
             </div>
         </section>
 
@@ -72,7 +74,7 @@
             <div class="intro-card">
                 <img src="chara.png" alt="Owner" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #2a6c8e; margin-bottom: 1rem; background: #e0f2fe;">
                 <p>Ada bug, request fitur, atau ingin custom bot untuk bisnismu? Hubungi saya kapan saja!</p>
-                <button class="btn-primary" style="margin-top: 15px;">Chat via WhatsApp</button>
+                <a href="https://wa.me/6285150910870?text=halo" target="_blank" class="btn-primary" style="margin-top: 15px;">Chat via WhatsApp</button>
             </div>
         </section>
 
@@ -90,8 +92,8 @@
             <div class="music-info">
                 <div class="music-disc" id="music-disc">🎵</div>
                 <div class="music-text">
-                    <span class="music-title">Lea's Theme</span>
-                    <span class="music-status" id="music-status">Ketuk play 🎧</span>
+                    <span class="music-title">Rokudenashi</span>
+                    <span class="music-status" id="music-status">One Voice</span>
                 </div>
             </div>
             <button class="music-action-btn" id="music-toggle-btn">
@@ -101,7 +103,7 @@
         <button class="floating-music-fab" id="music-fab-btn" title="Buka Pemutar Musik">
             🎵
         </button>
-        <audio id="bgm-audio" loop src="music/song.mp3"></audio>
+        <audio id="bgm-audio" loop src="song.mp3"></audio>
     </div>
 
     <script src="script.js"></script>
