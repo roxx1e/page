@@ -35,12 +35,12 @@ html, body {
 /* Main content area */
 main {
   flex: 1;
-  position: relative;
-  z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* To fill full height */
+  justify-content: space-between; /* Fill entire space */
+  position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 /* Background & gradients */
@@ -62,7 +62,7 @@ main {
 .gradient2 { width: 400px; height: 400px; background: #d7ecff; right: -100px; bottom: 5%; animation-delay: 4s; }
 .gradient3 { width: 320px; height: 320px; background: #ffe5f4; left: 40%; top: 35%; animation-delay: 8s; }
 
-/* Character container - fills width and keeps character at bottom */
+/* Character container - fills width and positions near mouth */
 .persistent-character-container {
   position: absolute;
   bottom: 0;
@@ -76,28 +76,27 @@ main {
   pointer-events: none;
   z-index: 2;
 }
-
-/* Character image */
-#character {
-  max-width: 100%;
-  height: auto;
-  width: auto;
-  max-height: 100%;
-  object-fit: contain;
-  object-position: bottom center;
-  pointer-events: auto;
-  cursor: pointer;
-  user-select: none;
-  filter: drop-shadow(0 15px 25px rgba(93,169,255,0.25));
-  animation: characterFloat 4s ease-in-out infinite;
-  transition: .35s;
-  /* Remove mask for seamless integration */
+.character-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 750px;
+  height: 100%;
 }
-
-/* Bubble for greeting */
+.character {
+  width: 150px; /* Adjust size as needed */
+  height: auto;
+  margin-bottom: 10px; /* Space from bottom for proximity */
+  /* No image, placeholder for your character graphic */
+  background: #ccc; /* Placeholder background */
+  border-radius: 50%; /* Optional */
+  /* Remove mask for clean look */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 #characterBubble {
   position: absolute;
-  bottom: calc(65vh + 10px); /* Slightly above character */
+  bottom: calc(65vh + 40px); /* Near the character's mouth area */
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
@@ -133,23 +132,18 @@ header {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(12px);
 }
-
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
 }
-
-/* Logo style */
 .logo {
   font-family: "Cherry Bomb One", cursive;
   font-size: 1.7rem;
   color: #4d8fff;
   text-shadow: 2px 2px 0 #fff, 4px 4px 0 rgba(0,0,0,.15);
 }
-
-/* Navigation buttons */
 nav {
   display: flex;
   gap: 6px;
@@ -159,7 +153,6 @@ nav {
   border: 2px solid var(--border);
   box-shadow: var(--shadow);
 }
-
 .tab-btn {
   font-family: Nunito, sans-serif;
   background: transparent;
@@ -198,15 +191,16 @@ nav {
 .page {
   display: none;
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  flex: 1; /* Take full height */
+  flex: 1;
   padding: 20px;
   box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px); /* To account for header height */
 }
 .page.active {
   display: flex;
-  flex-direction: column;
   opacity: 1;
   transform: translateY(0);
 }
@@ -222,8 +216,6 @@ nav {
   position: relative;
   z-index: 5;
 }
-
-/* Hero Actions */
 .hero-actions {
   display: flex;
   flex-direction: column;
@@ -236,8 +228,6 @@ nav {
   border: none;
   box-shadow: none;
 }
-
-/* Buttons */
 .pixel-btn.small-btn {
   background: linear-gradient(180deg, var(--primary2), var(--primary));
   color: #fff;
@@ -257,8 +247,6 @@ nav {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0 var(--border);
 }
-
-/* Stats */
 .small-stats {
   display: flex;
   gap: 6px;
@@ -327,6 +315,7 @@ footer {
   padding: 10px 0;
   background: transparent;
   z-index: 10;
+  position: relative;
 }
 .footer {
   display: flex;
@@ -337,6 +326,7 @@ footer {
   flex-wrap: wrap;
   gap: 6px;
   font-size: 0.75rem;
+  width: 100%;
 }
 
 /* Animations */
@@ -368,13 +358,12 @@ footer {
   nav.show {
     display: flex;
   }
-  /* Make hero content fill space and ensure character fits */
-  #character {
-    max-width: 100%;
-    height: auto;
+  /* Character size and position */
+  .character {
+    width: 200px; /* Larger size for mobile */
   }
-  /* Make sure main takes full height */
+  /* Main height adjustment for mobile */
   main {
-    height: calc(100vh - 60px); /* Header height approximation */
+    height: calc(100vh - 60px);
   }
-    }
+            }
