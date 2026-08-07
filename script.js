@@ -7,7 +7,7 @@ async function fetchBotStats() {
         if (!response.ok) throw new Error(`HTTP error!`);
         const data = await response.json();
         
-        // Memperbarui UI dari data api.js
+        // Memperbarui UI dari data api.js[cite: 2]
         document.getElementById('user-count').textContent = data.users.toLocaleString('id-ID') + '+';
         document.getElementById('group-count').textContent = data.groups.toLocaleString('id-ID') + '+';
     } catch (error) {
@@ -36,15 +36,12 @@ function initTabs() {
             e.preventDefault();
             const targetId = link.getAttribute('data-target');
 
-            // Hapus kelas active dari semua
             tabLinks.forEach(l => l.classList.remove('active'));
             tabContents.forEach(c => c.classList.remove('active'));
 
-            // Tambahkan kelas active ke yang di klik
             link.classList.add('active');
             document.getElementById(targetId).classList.add('active');
 
-            // Tutup menu hamburger jika di mobile
             if (window.innerWidth <= 768) {
                 navLinksContainer.classList.remove('active');
             }
@@ -55,7 +52,7 @@ function initTabs() {
 // 3. Efek Bintang (Kawaii Background)
 function createStars() {
     const container = document.getElementById('stars-container');
-    const starCount = 30; // Jumlah bintang
+    const starCount = 30;
     const characters = ['✦', '✧', '★', '☆'];
 
     for (let i = 0; i < starCount; i++) {
@@ -63,11 +60,8 @@ function createStars() {
         star.classList.add('star');
         star.innerText = characters[Math.floor(Math.random() * characters.length)];
         
-        // Posisi Acak
         star.style.left = `${Math.random() * 100}vw`;
         star.style.top = `${Math.random() * 100}vh`;
-        
-        // Ukuran dan Durasi Kelap-kelip Acak
         star.style.fontSize = `${Math.random() * 1.5 + 0.5}rem`;
         star.style.animationDuration = `${Math.random() * 2 + 1}s`;
         star.style.animationDelay = `${Math.random() * 2}s`;
@@ -80,23 +74,65 @@ function createStars() {
 function initClickEffect() {
     document.addEventListener('click', function(e) {
         const ripple = document.getElementById('click-ripple');
-        // Reset animasi
         ripple.classList.remove('animate');
         
-        // Atur posisi dan ukuran
-        const size = 50; // Ukuran efek
+        const size = 50;
         ripple.style.width = `${size}px`;
         ripple.style.height = `${size}px`;
         ripple.style.left = `${e.clientX - size/2}px`;
         ripple.style.top = `${e.clientY - size/2}px`;
         
-        // Paksa reflow dan jalankan animasi
         void ripple.offsetWidth; 
         ripple.classList.add('animate');
     });
 }
 
-// Inisialisasi Semua Fungsi Saat Halaman Dimuat
+// 5. Animasi Mengetik (Typewriter) pada Chat Bubble dengan Auto-Resizing
+function initTypingEffect() {
+    const textElement = document.getElementById('chat-bubble-text');
+    const messages = [
+        "✨ Selamat datang di web Lea!",
+        "Halo, Aku Lea! 👋 Asisten WhatsApp pintar yang siap membantu mengelola grup dan membalas pesanmu secara otomatis!"
+    ];
+    
+    let messageIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentMessage = messages[messageIndex];
+        
+        if (isDeleting) {
+            textElement.textContent = currentMessage.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            textElement.textContent = currentMessage.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 30 : 60;
+
+        if (!isDeleting && charIndex === currentMessage.length) {
+            if (messageIndex === 0) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else {
+                document.querySelector('.typing-cursor').style.animation = 'blinkCursor 1s infinite';
+                return; 
+            }
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            messageIndex++;
+            typeSpeed = 500;
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    setTimeout(type, 1000);
+}
+
+// Inisialisasi Saat Halaman Dimuat
 document.addEventListener('DOMContentLoaded', () => {
     fetchBotStats();
     setInterval(fetchBotStats, 30000); 
@@ -104,8 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabs();
     createStars();
     initClickEffect();
+    initTypingEffect();
 
-    // Hamburger Menu Toggle
     document.getElementById('hamburger').addEventListener('click', () => {
         document.getElementById('nav-links').classList.toggle('active');
     });
