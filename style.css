@@ -117,6 +117,7 @@ body {
     color: #ffffff;
     border: 2px solid var(--border-color);
     box-shadow: 2px 2px 0px var(--border-color);
+    transform: scale(1.05);
 }
 
 /* Main Container */
@@ -133,15 +134,15 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    animation: fadeIn 0.4s ease forwards;
+    animation: fadeInTab 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 .tab-content.active {
     display: flex;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .section-title {
@@ -149,11 +150,17 @@ body {
     margin-bottom: 2rem;
     color: var(--accent-color);
     text-shadow: 2px 2px 0px rgba(42, 108, 142, 0.2);
+    animation: bounceTitle 2s ease-in-out infinite;
 }
 
-/* Chat Bubble Container dengan jarak lebih lega */
+@keyframes bounceTitle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Chat Bubble Container */
 .chat-bubble-container {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -161,7 +168,7 @@ body {
 .chat-bubble {
     background: var(--card-bg);
     border: 3px solid var(--border-color);
-    padding: 0.8rem 1.5rem;
+    padding: 0.9rem 1.8rem;
     border-radius: 30px;
     font-weight: 600;
     color: var(--accent-color);
@@ -203,26 +210,30 @@ body {
     50% { opacity: 0; }
 }
 
-/* Character dengan Drop Shadow */
+/* Character Diperbesar untuk Mengisi Ruang Kosong */
 .hero-character img {
     max-width: 100%;
     height: auto;
-    max-height: 380px;
+    max-height: 480px; /* Ukuran diperbesar signifikan agar mengisi space */
     object-fit: contain;
-    margin-bottom: -15px;
+    margin-bottom: -10px;
     position: relative;
     z-index: 2;
-    animation: floatCharacter 3s ease-in-out infinite;
-    filter: drop-shadow(4px 4px 0px rgba(42, 108, 142, 0.25));
+    animation: floatCharacter 3.5s ease-in-out infinite;
+    filter: drop-shadow(5px 5px 0px rgba(42, 108, 142, 0.2));
+    transition: transform 0.3s ease;
+}
+.hero-character img:hover {
+    transform: scale(1.03) rotate(1deg);
 }
 
 @keyframes floatCharacter {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    50% { transform: translateY(-18px); }
 }
 @keyframes floatBubble {
-    0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50% { transform: translateY(-8px) rotate(2deg); }
+    0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+    50% { transform: translateY(-8px) rotate(1.5deg); }
 }
 
 /* Cards */
@@ -237,6 +248,11 @@ body {
     margin-bottom: 2rem;
     position: relative;
     z-index: 3;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.intro-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 7px 7px 0px var(--border-color);
 }
 
 .intro-card h1, .intro-card h3 {
@@ -258,21 +274,27 @@ body {
     font-size: 0.9rem;
     color: #2a6c8e;
     background: rgba(42, 108, 142, 0.1);
-    padding: 6px 14px;
+    padding: 8px 16px;
     border-radius: 20px;
     border: 2px solid #2a6c8e;
+    box-shadow: 3px 3px 0px rgba(42, 108, 142, 0.2);
+    animation: pulseStatus 2s infinite;
+}
+@keyframes pulseStatus {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
 }
 .dot {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     background-color: #2a6c8e;
     border-radius: 50%;
     margin-right: 8px;
     animation: blink 1.5s infinite;
 }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-/* Button Primary */
+/* Button Primary dengan animasi hover */
 .btn-primary {
     display: block;
     width: 100%;
@@ -289,37 +311,42 @@ body {
     cursor: pointer;
     transition: transform 0.1s, box-shadow 0.1s, background 0.2s;
 }
+.btn-primary:hover {
+    background: #337fA6;
+}
 .btn-primary:active {
     transform: translate(3px, 3px);
     box-shadow: 1px 1px 0px #000000;
-    background: #1e526e;
 }
 
 /* Stats */
 .stats-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 1.2rem;
     width: 100%;
 }
 .stat-card {
     background: var(--card-bg);
     border: 3px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1rem 0.5rem;
+    border-radius: 14px;
+    padding: 1.2rem 0.5rem;
     text-align: center;
     box-shadow: 4px 4px 0px var(--border-color);
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
-.stat-card:hover { transform: translateY(-5px); }
+.stat-card:hover { 
+    transform: translateY(-6px); 
+    box-shadow: 6px 6px 0px var(--border-color);
+}
 .stat-number {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--primary-color);
     font-weight: 700;
 }
 .stat-label {
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
 }
 
@@ -355,9 +382,14 @@ body {
         box-shadow: 5px 5px 0px var(--border-color);
         border-radius: 12px;
         padding: 1rem;
+        animation: dropdownAnim 0.3s ease forwards;
+    }
+    @keyframes dropdownAnim {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
     
     .nav-links.active { display: flex; }
-    .stats-section { grid-template-columns: 1fr; }
-    .hero-character img { max-height: 300px; }
+    .stats-section { grid-template-columns: repeat(2, 1fr); }
+    .hero-character img { max-height: 360px; }
     }
